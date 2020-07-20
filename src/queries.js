@@ -39,10 +39,10 @@ const createUser = (request, response) => {
 
 const updateUser = (request, response) => {
     const user_id = parseInt(request.params.id)
-    const { display_name, email } = request.body
+    const { display_name, email, password } = request.body
 
     pool.query(
-        'UPDATE users SET display_name =  $1, email = $2 WHERE user_id = $3', [display_name, email, user_id], (error, results) => {
+        'UPDATE users SET display_name =  $1, email = $2, password = $3, WHERE user_id = $4', [display_name, email, password, user_id], (error, results) => {
             if (error) {
                 throw error
             }
