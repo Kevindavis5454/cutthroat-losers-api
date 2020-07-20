@@ -27,13 +27,13 @@ const getUserById = (request, response) => {
 }
 
 const createUser = (request, response) => {
-    const { display_name, email} = request.body
+    const { display_name, email, password} = request.body
 
-    pool.query('INSERT INTO users (display_name, email) VALUES ($1, $2) RETURNING id', [display_name, email], (error, results) => {
+    pool.query('INSERT INTO users (display_name, email, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, email, password], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`User added with USER ID: ${results.rows[0].id}`)
+        response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
     })
 }
 
