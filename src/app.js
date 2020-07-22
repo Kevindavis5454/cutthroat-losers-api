@@ -28,8 +28,6 @@ app.use(bodyParser.urlencoded ({extended: true,}))
 app.use(bodyParser.json())
 app.use(session({secret: 'tinybluedog'}))
 app.use(cookieParser())
-app.use(passport.initialize())
-app.use(passport.session())
 
 app.get('/', (request, response) => {
         response.json({ info: 'Node.js, Express, and Postgres API'})
@@ -72,6 +70,9 @@ passport.deserializeUser((user_id, done) => {
         done(null, results.rows[0])
     })
 })
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 
 app.use(function errorHandler(error, req, res, next) {
