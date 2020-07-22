@@ -42,11 +42,9 @@ app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
 
 
-passport.use(new LocalStrategy({
-        usernameField: 'email',
-    },
-    function(email, password, done) {
-        db.query('SELECT user_id, email, password FROM users WHERE email = $1', [email], (err, user) => {
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        db.query('SELECT user_id, username, password FROM users WHERE username = $1', [username], (err, user) => {
             if (err) {
                 return done(err)
             }
@@ -66,7 +64,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((user_id, done) => {
-    db.query('SELECT user_id, email, FROM users WHERE user_id = $1', [parseInt(user_id, 10)], (err, results) => {
+    db.query('SELECT user_id, username, FROM users WHERE user_id = $1', [parseInt(user_id, 10)], (err, results) => {
         if (err) {
             return done(err)
         }
