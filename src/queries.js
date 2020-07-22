@@ -6,6 +6,8 @@ const pool = new Pool({
 
 });
 
+/*USERS TABLE*/
+
 const getUsers = (request, response) => {
     pool.query('SELECT * FROM users ORDER BY user_id ASC', (error, results) => {
         if (error) {
@@ -68,5 +70,8 @@ module.exports = {
     createUser,
     updateUser,
     deleteUser,
+    query: (text, params, callback) => {
+        return pool.query(text, params, callback)
+    },
 }
 
