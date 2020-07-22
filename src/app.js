@@ -46,7 +46,7 @@ passport.use(new LocalStrategy({
         usernameField: 'email',
     },
     function(username, password, done) {
-        db.query('SELECT user_id, email, password FROM users WHERE email = $1', [email], (err, user) => {
+        db.query('SELECT user_id, email, password FROM users WHERE email = $1', [username], (err, user) => {
             if (err) {
                 return done(err)
             }
