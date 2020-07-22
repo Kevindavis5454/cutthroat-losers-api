@@ -1,5 +1,6 @@
 const Pool = require('pg').Pool
 require('dotenv').config();
+const bcrypt = require('bcrypt')
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -29,13 +30,15 @@ const getUserById = (request, response) => {
 }
 
 const createUser = (request, response) => {
+    const saltRounds = 10;
     const { display_name, email, password} = request.body
-
-    pool.query('INSERT INTO users (display_name, email, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, email, password], (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+        pool.query('INSERT INTO users (display_name, email, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, email, hash], (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
+        })
     })
 }
 
@@ -63,6 +66,7 @@ const deleteUser = (request, response) => {
         response.status(200).send(`User deleted with USER ID: ${user_id}`)
     })
 }
+
 
 module.exports = {
     getUsers,
