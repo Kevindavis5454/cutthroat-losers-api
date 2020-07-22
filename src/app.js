@@ -32,7 +32,7 @@ app.get('/', (request, response) => {
         response.json({ info: 'Node.js, Express, and Postgres API'})
     }
 )
-app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/' }))
+app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }))
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
 app.post('/api/users', db.createUser)
