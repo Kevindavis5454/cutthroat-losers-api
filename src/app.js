@@ -48,8 +48,8 @@ const pool = new Pool({
 
 
 passport.use(new LocalStrategy(
-    function(username, password, done) {
-        pool.query('SELECT EXISTS( SELECT * FROM users WHERE username = $1, password = $2)', [username, password], (error, user)=> {
+    function(username, password, user_id, done) {
+        pool.query('SELECT EXISTS( SELECT * FROM users WHERE username = $1, password = $2, user_id = $3)', [username, password, user_id], (error, user)=> {
             if (error) {
                 return done(error)
             }
