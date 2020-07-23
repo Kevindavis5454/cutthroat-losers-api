@@ -48,7 +48,7 @@ const pool = new Pool({
 
 
 passport.use(new LocalStrategy(
-    function(req, username, password, done) {
+    function(username, password, done) {
         return pool.query('SELECT user_id, username, password FROM users WHERE username = $1 AND password = $2', [username, password] )
             .then ((result) => { return done(null, result);
             })
