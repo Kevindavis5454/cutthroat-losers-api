@@ -31,14 +31,12 @@ const getUserById = (request, response) => {
 
 const createUser = (request, response) => {
     const { display_name, username, password} = request.body
-    bcrypt.hash(password, 10, function(err, hash) {
-        pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, hash], (error, results) => {
+        pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, password], (error, results) => {
             if (error) {
                 throw error
             }
             response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
         })
-})
 }
 
 const updateUser = (request, response) => {
@@ -73,8 +71,5 @@ module.exports = {
     createUser,
     updateUser,
     deleteUser,
-    query: (text, params, callback) => {
-        return pool.query(text, params, callback)
-    },
 }
 
