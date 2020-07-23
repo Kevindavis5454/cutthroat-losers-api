@@ -24,6 +24,8 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 app.options('*', cors())
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(flash())
 app.use(bodyParser.urlencoded ({extended: true,}))
 app.use(bodyParser.json())
@@ -73,8 +75,6 @@ passport.deserializeUser((user_id, done) => {
         })
 })
 
-app.use(passport.initialize())
-app.use(passport.session())
 
 app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }, (req, resp) => {
     resp.send(req.user)
