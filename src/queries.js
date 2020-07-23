@@ -7,7 +7,7 @@ const pool = new Pool({
 
 });
 
-/*const loginUser = (request, response) => {
+const loginUser = (request, response) => {
     const {username, password} = request.body
     pool.query('SELECT EXISTS( SELECT * FROM users WHERE username = $1, password = $2)', [username, password], (error, results) => {
         if (error) {
@@ -15,7 +15,7 @@ const pool = new Pool({
         }
         response.status(200).json(results.rows)
     })
-}*/
+}
 
 /*USERS TABLE*/
 

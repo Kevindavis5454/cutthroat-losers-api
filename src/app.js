@@ -37,16 +37,27 @@ app.get('/', (request, response) => {
         response.json({ info: 'Node.js, Express, and Postgres API'})
     }
 )
+const loginUser = (request, response) => {
+    const {username, password} = request.body
+    pool.query('SELECT EXISTS( SELECT * FROM users WHERE username = $1, password = $2)', [username, password], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
 app.post('/api/users', db.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
+app.get('/api/loginuser', loginUser)
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 
 });
+
 
 
 passport.use(new LocalStrategy(
@@ -76,7 +87,8 @@ passport.deserializeUser((user_id, done) => {
 })
 
 
-app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }))
+app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }
+))
 
 
 app.use(function errorHandler(error, req, res, next) {
