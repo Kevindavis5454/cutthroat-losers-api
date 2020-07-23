@@ -14,9 +14,9 @@ const passport = require('passport')
 const Pool = require('pg').Pool
 const bcrypt = require('bcrypt')
 
-/*const pool = new Pool({
+const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-});*/
+});
 
 const app = express()
 
@@ -28,17 +28,17 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 app.options('*', cors())
-/*app.use(flash())*/
+app.use(flash())
 app.use(bodyParser.urlencoded ({extended: true,}))
 app.use(bodyParser.json())
-/*app.use(session({
+app.use(session({
     secret: process.env.SECRET,
-}))*/
-/*app.use(cookieParser())*/
+}))
+app.use(cookieParser())
 
 
-/*passport.use(new LocalStrategy((username, password, cb) => {
-    db.query('SELECT user_id, username, password, type FROM users WHERE username=$1', [username], (err, result) => {
+passport.use(new LocalStrategy((username, password, cb) => {
+    pool.query('SELECT user_id, username, password, type FROM users WHERE username=$1', [username], (err, result) => {
         if(err) {
             return cb(err)
         }
@@ -61,7 +61,7 @@ passport.serializeUser(function(user, cb) {
     cb(null, user.id);
 });
 passport.deserializeUser((id, cb) => {
-    db.query('SELECT user_id, username, type FROM users WHERE id = $1', [parseInt(id, 10)], (err, results) => {
+    pool.query('SELECT user_id, username, type FROM users WHERE id = $1', [parseInt(id, 10)], (err, results) => {
         if(err) {
             return cb(err)
         }
@@ -70,10 +70,10 @@ passport.deserializeUser((id, cb) => {
     })
 })
 app.use(passport.initialize());
-app.use(passport.session());*/
+app.use(passport.session());
 
 
-/*app.post('/api/login', passport.authenticate('local', { successRedirect: '/'}))*/
+app.post('/api/login', passport.authenticate('local', { successRedirect: '/'}))
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
 app.post('/api/users', db.createUser)
