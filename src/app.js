@@ -49,7 +49,7 @@ const pool = new Pool({
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        pool.query('SELECT EXISTS( SELECT user_id, username, password FROM users WHERE username = $1, password = $2)', [username, password], (error, user)=> {
+        pool.query('SELECT EXISTS( SELECT user_id, username, password FROM users WHERE username = $1', [username], (error, user)=> {
             console.log(user);
             if (error) {
                 return done(error)
@@ -72,7 +72,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((user_id, done) => {
-    db.query('SELECT user_id, username, FROM users WHERE user_id = $1', [parseInt(user_id, 10)], (err, results) => {
+    pool.query('SELECT user_id, username, FROM users WHERE user_id = $1', [parseInt(user_id, 10)], (err, results) => {
         if (err) {
             return done(err)
         }
