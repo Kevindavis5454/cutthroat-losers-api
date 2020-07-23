@@ -31,7 +31,7 @@ const getUserById = (request, response) => {
 
 const createUser = (request, response) => {
     const { display_name, username, password} = request.body
-        pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, hash], (error, results) => {
+        pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, password], (error, results) => {
             if (error) {
                 throw error
             }
