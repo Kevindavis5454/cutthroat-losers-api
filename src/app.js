@@ -28,6 +28,7 @@ app.use(flash())
 app.use(bodyParser.urlencoded ({extended: true,}))
 app.use(bodyParser.json())
 app.use(session({secret: 'tinybluedog'}))
+app.use(express.static("public"));
 app.use(cookieParser())
 
 app.get('/', (request, response) => {
@@ -47,7 +48,7 @@ const pool = new Pool({
 
 
 passport.use(new LocalStrategy(
-    function(req, username, password, done) {
+    function(username, password, done) {
         return pool.query('SELECT user_id, username, password FROM users WHERE username = $1 AND password = $2', [username, password] )
             .then ((result) => { return done(null, result);
             })
@@ -75,7 +76,9 @@ passport.deserializeUser((user_id, done) => {
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }))
+app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }, (req, resp) => {
+    resp.send(req.user)
+}))
 
 
 app.use(function errorHandler(error, req, res, next) {
