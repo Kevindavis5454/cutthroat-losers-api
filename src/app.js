@@ -9,7 +9,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
-const request = require('request')
 const passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
 const Pool = require('pg').Pool
@@ -29,33 +28,14 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 app.options('*', cors())
-app.use(passport.initialize())
-app.use(passport.session())
 app.use(flash())
 app.use(bodyParser.urlencoded ({extended: true,}))
 app.use(bodyParser.json())
 app.use(session({
     secret: process.env.SECRET,
 }))
-app.use(express.static("public"));
 app.use(cookieParser())
 
-// PASSPORT
-
-function validPassword(password, hash, salt) {
-    var hashVerify = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
-    return hash === hashVerify;
-}
-
-function genPassword(password) {
-    var salt = crypto.randomBytes(32).toString('hex');
-    var genHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
-
-    return {
-        salt: salt,
-        hash: genHash
-    };
-}
 
 passport.use(new LocalStrategy((username, password, cb) => {
     db.query('SELECT user_id, username, password, type FROM users WHERE username=$1', [username], (err, result) => {

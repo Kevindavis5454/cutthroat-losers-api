@@ -31,7 +31,7 @@ const getUserById = (request, response) => {
 
 const createUser = (request, response) => {
     const { display_name, username, password} = request.body
-    bcrypt.hash(password, 7, function(err, hash) {
+    bcrypt.hash(password, 10, function(err, hash) {
         pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, hash], (error, results) => {
             if (error) {
                 throw error
