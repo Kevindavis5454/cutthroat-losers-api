@@ -34,7 +34,6 @@ app.get('/', (request, response) => {
         response.json({ info: 'Node.js, Express, and Postgres API'})
     }
 )
-app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }))
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
 app.post('/api/users', db.createUser)
@@ -49,39 +48,34 @@ const pool = new Pool({
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        pool.query('SELECT EXISTS( SELECT user_id, username, password FROM users WHERE username = $1', [username], (error, user)=> {
-            console.log(user);
-            if (error) {
-                return done(error)
-            }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
-            }
-            if (!user.password) {
-                return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-        });
-    }
-));
+        return pool.query('SELECT user_id, username, password FROM users WHERE username = $1 AND password = $2', [username, password] )
+            .then ((result) => { return done(null, result);
+            })
+            .catch((err) => {
+                return done(null, false, {message:'Wrong Email or Password'});
+            })
+            }));
 
 
 
 passport.serializeUser((user, done) => {
-    done(null, user.id)
+    done(null, user.user_id)
 })
 
 passport.deserializeUser((user_id, done) => {
-    pool.query('SELECT user_id, username, FROM users WHERE user_id = $1', [parseInt(user_id, 10)], (err, results) => {
-        if (err) {
-            return done(err)
-        }
-        done(null, results.rows[0])
-    })
+    pool.query('SELECT user_id, username, FROM users WHERE user_id = $1', [user_id] )
+        .then((user) => {
+            done(null, user)
+        })
+        .catch((err) => {
+            done(new Error(`User with id ${user_id} does not exist`));
+        })
 })
 
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }))
 
 
 app.use(function errorHandler(error, req, res, next) {
