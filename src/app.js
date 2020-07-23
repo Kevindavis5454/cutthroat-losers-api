@@ -76,9 +76,7 @@ passport.deserializeUser((user_id, done) => {
 })
 
 
-app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }, (req, resp) => {
-    resp.send(req.user)
-}))
+app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }))
 
 
 app.use(function errorHandler(error, req, res, next) {
