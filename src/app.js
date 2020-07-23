@@ -9,10 +9,15 @@ const bodyParser = require('body-parser');
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
+const request = require('request')
 const passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
 const Pool = require('pg').Pool
+const bcrypt = require('bcrypt')
 
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+});
 
 const app = express()
 
@@ -29,66 +34,72 @@ app.use(passport.session())
 app.use(flash())
 app.use(bodyParser.urlencoded ({extended: true,}))
 app.use(bodyParser.json())
-app.use(session({secret: 'tinybluedog'}))
+app.use(session({
+    secret: process.env.SECRET,
+}))
 app.use(express.static("public"));
 app.use(cookieParser())
 
-app.get('/', (request, response) => {
-        response.json({ info: 'Node.js, Express, and Postgres API'})
-    }
-)
-const loginUser = (request, response) => {
-    const {username, password} = request.body
-    pool.query('SELECT EXISTS( SELECT * FROM users WHERE username = $1, password = $2)', [username, password], (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(200).json(results.rows)
-    })
+// PASSPORT
+
+function validPassword(password, hash, salt) {
+    var hashVerify = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+    return hash === hashVerify;
 }
+
+function genPassword(password) {
+    var salt = crypto.randomBytes(32).toString('hex');
+    var genHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+
+    return {
+        salt: salt,
+        hash: genHash
+    };
+}
+
+passport.use(new LocalStrategy((username, password, cb) => {
+    db.query('SELECT user_id, username, password, type FROM users WHERE username=$1', [username], (err, result) => {
+        if(err) {
+            return cb(err)
+        }
+
+        if(result.rows.length > 0) {
+            const first = result.rows[0]
+            bcrypt.compare(password, first.password, function(err, res) {
+                if(res) {
+                    cb(null, { id: first.id, username: first.username, type: first.type })
+                } else {
+                    cb(null, false)
+                }
+            })
+        } else {
+            cb(null, false)
+        }
+    })
+}))
+passport.serializeUser(function(user, cb) {
+    cb(null, user.id);
+});
+passport.deserializeUser((id, cb) => {
+    db.query('SELECT user_id, username, type FROM users WHERE id = $1', [parseInt(id, 10)], (err, results) => {
+        if(err) {
+            return cb(err)
+        }
+
+        cb(null, results.rows[0])
+    })
+})
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.post('/api/login', passport.authenticate('local', { successRedirect: '/'}))
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
 app.post('/api/users', db.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
-app.get('/api/loginuser', loginUser)
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-
-});
-
-
-
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-        return pool.query('SELECT user_id, username, password FROM users WHERE username = $1 AND password = $2', [username, password] )
-            .then ((result) => { return done(null, result);
-            })
-            .catch((err) => {
-                return done(null, false, {message:'Wrong Email or Password'});
-            })
-            }));
-
-
-
-passport.serializeUser((user, done) => {
-    done(null, user.user_id)
-})
-
-passport.deserializeUser((user_id, done) => {
-    pool.query('SELECT user_id, username, FROM users WHERE user_id = $1', [user_id] )
-        .then((user) => {
-            done(null, user)
-        })
-        .catch((err) => {
-            done(new Error(`User with id ${user_id} does not exist`));
-        })
-})
-
-
-app.post('/api/login', passport.authenticate('local', { successRedirect: '/personal/home', failureRedirect: '/', failureFlash: true }
-))
 
 
 app.use(function errorHandler(error, req, res, next) {

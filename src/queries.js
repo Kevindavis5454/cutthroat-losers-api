@@ -7,16 +7,6 @@ const pool = new Pool({
 
 });
 
-const loginUser = (request, response) => {
-    const {username, password} = request.body
-    pool.query('SELECT EXISTS( SELECT * FROM users WHERE username = $1, password = $2)', [username, password], (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(200).json(results.rows)
-    })
-}
-
 /*USERS TABLE*/
 
 const getUsers = (request, response) => {
@@ -41,13 +31,14 @@ const getUserById = (request, response) => {
 
 const createUser = (request, response) => {
     const { display_name, username, password} = request.body
-        pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, password], (error, results) => {
+    bcrypt.hash(password, 7, function(err, hash) {
+        pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, hash], (error, results) => {
             if (error) {
                 throw error
             }
             response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
         })
-
+})
 }
 
 const updateUser = (request, response) => {
@@ -82,9 +73,8 @@ module.exports = {
     createUser,
     updateUser,
     deleteUser,
-  /*  loginUser,*/
-    /*query: (text, params, callback) => {
+    query: (text, params, callback) => {
         return pool.query(text, params, callback)
-    },*/
+    },
 }
 
