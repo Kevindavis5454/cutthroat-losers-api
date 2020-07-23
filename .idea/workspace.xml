@@ -62,7 +62,7 @@
       <updated>1584723396221</updated>
       <workItem from="1584723397324" duration="836000" />
       <workItem from="1593701666857" duration="1700000" />
-      <workItem from="1594995425608" duration="33938000" />
+      <workItem from="1594995425608" duration="34285000" />
     </task>
     <task id="LOCAL-00001" summary="Basic Server Setup">
       <created>1594997926138</created>
@@ -246,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595515890353</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Added Passport">
+      <created>1595516045513</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1595516045513</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
