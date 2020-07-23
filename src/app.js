@@ -69,8 +69,8 @@ passport.deserializeUser((id, cb) => {
         cb(null, results.rows[0])
     })
 })
-app.use(passport.initialize());
-app.use(passport.session());
+passport.initialize();
+passport.session();
 
 
 app.post('/api/login', passport.authenticate('local', { successRedirect: '/'}))
