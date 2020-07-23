@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 const passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
+const Pool = require('pg').Pool
 
 
 const app = express()
@@ -40,12 +41,17 @@ app.post('/api/users', db.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
 
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+
+});
+
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        db.query('SELECT user_id, username, password FROM users WHERE username = $1', [username], (err, user) => {
-            if (err) {
-                return done(err)
+        pool.query('SELECT EXISTS( SELECT * FROM users WHERE username = $1, password = $2)', [username, password], (error, user)=> {
+            if (error) {
+                return done(error)
             }
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });

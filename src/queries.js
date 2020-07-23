@@ -7,6 +7,16 @@ const pool = new Pool({
 
 });
 
+/*const loginUser = (request, response) => {
+    const {username, password} = request.body
+    pool.query('SELECT EXISTS( SELECT * FROM users WHERE username = $1, password = $2)', [username, password], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}*/
+
 /*USERS TABLE*/
 
 const getUsers = (request, response) => {
@@ -72,8 +82,9 @@ module.exports = {
     createUser,
     updateUser,
     deleteUser,
-    query: (text, params, callback) => {
+    loginUser,
+    /*query: (text, params, callback) => {
         return pool.query(text, params, callback)
-    },
+    },*/
 }
 
