@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,21 +62,7 @@
       <updated>1584723396221</updated>
       <workItem from="1584723397324" duration="836000" />
       <workItem from="1593701666857" duration="1700000" />
-      <workItem from="1594995425608" duration="58800000" />
-    </task>
-    <task id="LOCAL-00004" summary="Basic Server Setup">
-      <created>1595267448117</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1595267448117</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Basic Server Setup">
-      <created>1595269094545</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1595269094545</updated>
+      <workItem from="1594995425608" duration="59423000" />
     </task>
     <task id="LOCAL-00006" summary="Basic Server Setup">
       <created>1595270883726</created>
@@ -409,7 +393,21 @@
       <option name="project" value="LOCAL" />
       <updated>1595796625694</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Added Auth">
+      <created>1595802017160</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1595802017160</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Added Auth">
+      <created>1595802173138</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1595802173139</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
