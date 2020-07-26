@@ -23,7 +23,17 @@ function validUser(user) {
 
 }
 
-router.post('/signup', cors(), (req, res, next) => {
+router.post('/signup', (req, res, next) => {
+    User
+        .create(req.body)
+        .then(id => {
+            res.json({
+                message: 'Logged in'
+            })
+        })
+})
+
+/*router.post('/signup', (req, res, next) => {
     if (validUser(req.body)) {
         User
             .getOneByUsername(req.body.username)
@@ -61,7 +71,7 @@ router.post('/signup', cors(), (req, res, next) => {
     } else {
         next(new Error('Invalid user'))
     }
-});
+});*/
 
 
 router.post('/login', (req, res, next) => {
