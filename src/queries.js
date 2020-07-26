@@ -7,6 +7,7 @@ const pool = new Pool({
 
 });
 
+
 /*USERS TABLE*/
 
 const getUsers = (request, response) => {
