@@ -31,7 +31,7 @@ app.use(cors({
 }))
 
 
-app.use('/auth', auth)
+app.use('/auth', cors(), auth)
 
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
