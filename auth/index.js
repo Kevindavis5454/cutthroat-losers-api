@@ -64,7 +64,7 @@ router.post('/login', (req, res, next) => {
     if(validUser(req.body)) {
         //check to see if in DB
         User
-            .getOneByEmail(req.body.email)
+            .getOneByUsername(req.body.username)
             .then((user) => {
                 console.log('user', user)
                 if(user) {
