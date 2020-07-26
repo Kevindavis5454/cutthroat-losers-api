@@ -3,9 +3,13 @@ const router = express.Router();
 const bcrypt = require('bcrypt')
 const User = require('../db/user')
 const app = express()
+const cors = require('cors')
 
 
-
+app.use(cors({
+    origin: 'https://cutthroat-losers.vercel.app',
+    credentials: true,
+}))
 //Route paths are prepended with /auth
 
 function validUser(user) {
@@ -19,7 +23,7 @@ function validUser(user) {
 
 }
 
-router.post('/signup' , (req, res, next) => {
+router.post('/signup', cors(), (req, res, next) => {
     if (validUser(req.body)) {
         User
             .getOneByUsername(req.body.username)
