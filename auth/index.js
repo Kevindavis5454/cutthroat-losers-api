@@ -19,7 +19,7 @@ function validUser(user) {
 
 }
 
-app.post('/signup' , (req, res, next) => {
+router.post('/signup' , (req, res, next) => {
     if (validUser(req.body)) {
         User
             .getOneByUsername(req.body.username)
@@ -60,7 +60,7 @@ app.post('/signup' , (req, res, next) => {
 });
 
 
-app.post('/login', (req, res, next) => {
+router.post('/login', (req, res, next) => {
     if(validUser(req.body)) {
         //check to see if in DB
         User
