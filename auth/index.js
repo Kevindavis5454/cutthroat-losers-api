@@ -2,6 +2,7 @@ const express =  require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt')
 const User = require('../db/user')
+const app = express()
 
 
 
@@ -18,8 +19,7 @@ function validUser(user) {
 
 }
 
-
-router.post('/signup' , (req, res, next) => {
+app.post('/signup' , (req, res, next) => {
     if (validUser(req.body)) {
         User
             .getOneByUsername(req.body.username)
@@ -60,7 +60,7 @@ router.post('/signup' , (req, res, next) => {
 });
 
 
-router.post('/login', (req, res, next) => {
+app.post('/login', (req, res, next) => {
     if(validUser(req.body)) {
         //check to see if in DB
         User
