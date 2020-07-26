@@ -33,9 +33,9 @@ router.post('/signup' , (req, res, next) => {
                         .then((hash) => {
                             //Store hash in your password DB
                             const user = {
-                               username: req.body.username,
+                               username: user.username,
                                password: hash,
-                               display_name: req.body.display_name
+                               display_name: user.display_name
                             };
                             //insert user into db
                             User
