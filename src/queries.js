@@ -7,15 +7,15 @@ const pool = new Pool({
 
 });
 
-const userAuth = (request, response, next) => {
-    const { username, password, display_name, user_id } = request.body
+const userAuth = (request, response) => {
+    const { username, password } = request.body
     pool.query('SELECT password FROM users WHERE username = $1', [username], (error, results) => {
         if (error) {
             throw error
         }
         if (results.password == password) {
             response.json({
-                message: `User with ${display_name} and ${username} logged in!`
+                message: `User with ${username} logged in!`
             })
         }
     })
