@@ -20,7 +20,8 @@ const userAuth = (request, response) => {
                 signed: true,
                 sameSite: 'none',
                 secure: true,
-                maxAge: 86400000
+                maxAge: 86400000,
+                domain: 'https://cutthroat-losers.vercel.app'
             });
             response.send('')
         }
