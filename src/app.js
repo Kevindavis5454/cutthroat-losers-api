@@ -6,10 +6,8 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const db = require('./queries');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt')
-const auth = require('../auth/index')
 const cookieParser = require('cookie-parser')
-const authMiddleware = require('../auth/middleware')
+
 
 
 const app = express()
@@ -24,6 +22,7 @@ app.use(helmet())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded ({extended: false}))
 app.use(cookieParser("tinybluedog"))
+app.use(express.static(path.join(__dirname, 'public')));
 /*app.use(cors())*/
 app.use(cors({
     origin: 'https://cutthroat-losers.vercel.app',
