@@ -12,7 +12,8 @@ const userAuth = (request, response, next) => {
     pool.query('SELECT password FROM users WHERE username = $1', [username], (error, results) => {
         if (error) {
             throw error
-        }else if (results == password) {
+        }
+        if (results.password == password) {
             response.json({
                 message: `User with ${display_name} and ${username} logged in!`
             })
