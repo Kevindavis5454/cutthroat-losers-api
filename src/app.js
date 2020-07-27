@@ -24,18 +24,18 @@ app.use(helmet())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded ({extended: false}))
 app.use(cookieParser(process.env.COOKIE_SECRET))
-app.use(cors())
-/*app.use(cors({
+/*app.use(cors())*/
+app.use(cors({
     origin: 'https://cutthroat-losers.vercel.app',
     credentials: true,
-}))*/
+}))
 
 
 /*app.use('/auth', auth)*/
-
+app.post('api/login', db.userAuth)
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
-app.post('/api/users', db.createUser)
+app.post('/api/signup', db.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
 
