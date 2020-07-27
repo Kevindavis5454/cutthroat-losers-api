@@ -15,7 +15,6 @@ const userAuth = (request, response) => {
             throw error
         }
         if (results.rows[0].password == password) {
-            alert('That Username and Password are correct!')
             response.cookie('user_id', user.id, {
                 httpOnly: true,
                 signed: true,
