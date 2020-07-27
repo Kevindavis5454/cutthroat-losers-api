@@ -39,6 +39,8 @@ app.post('/api/signup', db.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
 
+app.get('/api/bingo_item', db.getBingoItems)
+
 
 
 app.use(function errorHandler(err, req, res, next) {
