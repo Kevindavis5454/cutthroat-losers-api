@@ -15,6 +15,7 @@ const userAuth = (request, response) => {
             throw error
         }
         if (results.rows[0].password == password) {
+            const isSecure = request.app.get('env') != 'development'
             response.cookie('user_id', results.rows[0].user_id, {
                 httpOnly: true,
                 signed: true,
