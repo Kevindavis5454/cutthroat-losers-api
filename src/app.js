@@ -32,7 +32,7 @@ app.use(cors({
 
 
 /*app.use('/auth', auth)*/
-app.post('api/login', db.userAuth)
+app.post('/api/login', db.userAuth)
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
 app.post('/api/signup', db.createUser)
