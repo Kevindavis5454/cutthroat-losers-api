@@ -15,9 +15,13 @@ const userAuth = (request, response) => {
             throw error
         }
         if (results.rows[0].password == password) {
-            response.json({
-                message: `User with ${username} logged in!`
-            })
+            alert('That Username and Password are correct!')
+            const isSecure = req.app.get('env') != 'development'
+            response.cookie('user_id', user.id, {
+                httpOnly: true,
+                signed: true,
+                secure: isSecure
+            });
         }
     })
 }
