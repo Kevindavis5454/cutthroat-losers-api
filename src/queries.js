@@ -21,7 +21,7 @@ const userAuth = (request, response) => {
                 signed: true,
                 secure: isSecure
             });
-            response.send(results.rows[0].user_id)
+            response.send('')
         }
     })
 }
