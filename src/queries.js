@@ -13,7 +13,7 @@ const userAuth = (request, response) => {
         if (error) {
             throw error
         }
-        if (results[0].password == password) {
+        if (results.password == request.body.password) {
             response.json({
                 message: `User with ${username} logged in!`
             })
