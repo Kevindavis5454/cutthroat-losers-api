@@ -18,8 +18,8 @@ const userAuth = (request, response) => {
             response.cookie('user_id', results.rows[0].user_id, {
                 httpOnly: true,
                 signed: true,
+                SameSite: 'None',
                 secure: true,
-                sameSite: 'none'
             });
             response.send('')
         }
