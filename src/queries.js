@@ -18,9 +18,8 @@ const userAuth = (request, response) => {
             response.cookie('user_id', results.rows[0].user_id, {
                 /*signed: true,*/
                 domain: 'cutthroat-losers.vercel.app',
-                httpOnly: false,
                 sameSite: 'none',
-                secure: false,
+                secure: true,
                 maxAge: 86400000
             });
             response.send('')
