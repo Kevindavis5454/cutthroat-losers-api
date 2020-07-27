@@ -22,6 +22,7 @@ const userAuth = (request, response) => {
                 secure: true,
                 maxAge: 86400000
             });
+            response.send('')
         }
     })
 }
