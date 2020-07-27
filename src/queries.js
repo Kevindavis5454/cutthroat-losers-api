@@ -16,12 +16,12 @@ const userAuth = (request, response) => {
         }
         if (results.rows[0].password == password) {
             alert('That Username and Password are correct!')
-            const isSecure = req.app.get('env') != 'development'
             response.cookie('user_id', user.id, {
                 httpOnly: true,
                 signed: true,
                 secure: isSecure
             });
+            response.send('')
         }
     })
 }
