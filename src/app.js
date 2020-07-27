@@ -23,7 +23,7 @@ app.use(helmet())
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded ({extended: false}))
-app.use(cookieParser(process.env.COOKIE_SECRET))
+app.use(cookieParser("tinybluedog"))
 /*app.use(cors())*/
 app.use(cors({
     origin: 'https://cutthroat-losers.vercel.app',
