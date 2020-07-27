@@ -9,13 +9,13 @@ const pool = new Pool({
 
 const userAuth = (request, response) => {
     const { username, password } = request.body
-    pool.query('SELECT password FROM users WHERE username = $1', [username], (error, results) => {
+    pool.query('SELECT password, user_id FROM users WHERE username = $1', [username], (error, results) => {
         console.log(results.rows[0].password)
         if (error) {
             throw error
         }
         if (results.rows[0].password == password) {
-            response.cookie('user_id', user.id, {
+            response.cookie('user_id', results.rows[0].user_id, {
                 httpOnly: true,
                 signed: true,
                 secure: isSecure
