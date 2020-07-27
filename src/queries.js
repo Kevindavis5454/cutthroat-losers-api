@@ -19,7 +19,7 @@ const userAuth = (request, response) => {
                 httpOnly: true,
                 signed: true,
                 secure: true,
-                SameSite: 'None'
+                sameSite: 'None'
             });
             response.send('')
         }
