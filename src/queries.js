@@ -95,6 +95,17 @@ const getBingoItems = (request, response) => {
     })
 }
 
+/*CONTEST TO USER*/
+
+const getContestToUser = (request, response) => {
+    pool.query('SELECT * FROM contest_to-user ORDER BY item_id ASC', (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
+
 
 module.exports = {
     getUsers,
@@ -103,6 +114,7 @@ module.exports = {
     updateUser,
     deleteUser,
     userAuth,
-    getBingoItems
+    getBingoItems,
+    getContestToUser
 }
 
