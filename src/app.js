@@ -41,6 +41,9 @@ app.get('/api/bingo_item', db.getBingoItems)
 
 app.get('/api/contest_to_user', db.getContestToUser)
 
+app.get('/api/contests', db.getContests)
+app.post('/api/contests', db.createContest)
+
 
 
 app.use(function errorHandler(err, req, res, next) {

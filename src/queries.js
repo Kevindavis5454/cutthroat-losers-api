@@ -16,11 +16,10 @@ const userAuth = (request, response) => {
         }
         if (results.rows[0].password == password) {
             response.cookie('user_id', results.rows[0].user_id, {
-                /*signed: true,*/
-                domain: 'cutthroat-losers.herokuapp.com',
+                httpOnly: true,
+                signed: true,
                 sameSite: 'none',
                 secure: true,
-                maxAge: 86400000
             });
             response.send('')
         }
@@ -85,6 +84,27 @@ const deleteUser = (request, response) => {
     })
 }
 
+/*CONTESTS TABLE*/
+
+const getContests = (request, response) => {
+    pool.query('SELECT * FROM contests ORDER BY contest_id ASC', (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
+
+const createContest = (request, response) => {
+    const { date_start, date_end, contest_name, weighin_day, date_created} = request.body
+        pool.query('INSERT INTO contests (date_start, date_end, contest_name, weighin_day, date_created) VALUES ($1, $2, $3, $4, $5) RETURNING contest_id', [date_start, date_end, contest_name, weighin_day, date_created], (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(201).send(`Contest added with CONTEST ID: ${results.rows[0].contest_id}`)
+        })
+}
+
 /*BINGO TABLE*/
 
 const getBingoItems = (request, response) => {
@@ -99,7 +119,7 @@ const getBingoItems = (request, response) => {
 /*CONTEST TO USER*/
 
 const getContestToUser = (request, response) => {
-    pool.query('SELECT * FROM contest_to_user ORDER BY id ASC', (error, results) => {
+    pool.query('SELECT * FROM contest_to-user ORDER BY id ASC', (error, results) => {
         if (error) {
             throw error
         }
@@ -116,6 +136,8 @@ module.exports = {
     deleteUser,
     userAuth,
     getBingoItems,
-    getContestToUser
+    getContestToUser,
+    getContests,
+    createContest
 }
 
