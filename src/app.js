@@ -39,7 +39,7 @@ app.delete('/api/users/:id', db.deleteUser)
 
 app.get('/api/bingo_item', db.getBingoItems)
 
-app.get('api/contest_to_user', db.getContestToUser)
+app.get('/api/contest_to_user', db.getContestToUser)
 
 
 
