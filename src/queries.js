@@ -16,10 +16,11 @@ const userAuth = (request, response) => {
         }
         if (results.rows[0].password == password) {
             response.cookie('user_id', results.rows[0].user_id, {
-                httpOnly: true,
-                signed: true,
+                /*signed: true,*/
+                domain: 'cutthroat-losers.herokuapp.com',
                 sameSite: 'none',
                 secure: true,
+                maxAge: 86400000
             });
             response.send('')
         }
