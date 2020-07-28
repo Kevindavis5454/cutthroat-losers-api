@@ -16,6 +16,7 @@ const userAuth = (request, response) => {
         }
         if (results.rows[0].password == password) {
             response.cookie('user_id', results.rows[0].user_id, {
+                domain: '*.herokuapp.com',
                 httpOnly: true,
                 signed: false,
                 sameSite: 'none',
