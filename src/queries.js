@@ -96,6 +96,16 @@ const getContests = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
+const getContestById = (request, response) => {
+    const contest_id = parseInt(request.params.id)
+
+    pool.query('SELECT * FROM contests WHERE contest_id = $1', [contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
 
 const createContest = (request, response) => {
     const { date_start, date_end, contest_name, weighin_day, date_created} = request.body
@@ -128,7 +138,7 @@ const getContestToUser = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
-const getContestsById = (request, response) => {
+const getContestsToUserById = (request, response) => {
     const user_id = parseInt(request.params.id)
 
     pool.query('SELECT * FROM contest_to_user WHERE user_id = $1', [user_id], (error, results) => {
@@ -151,6 +161,7 @@ module.exports = {
     getContestToUser,
     getContests,
     createContest,
-    getContestsById
+    getContestsToUserById,
+    getContestById
 }
 
