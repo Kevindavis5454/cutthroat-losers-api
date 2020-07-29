@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries.js" afterDir="false" />
-    </list>
+    <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,42 +60,7 @@
       <updated>1584723396221</updated>
       <workItem from="1584723397324" duration="836000" />
       <workItem from="1593701666857" duration="1700000" />
-      <workItem from="1594995425608" duration="87442000" />
-    </task>
-    <task id="LOCAL-00064" summary="Added Auth">
-      <created>1595809468194</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1595809468194</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Added Auth">
-      <created>1595810046407</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1595810046407</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Added Auth">
-      <created>1595810447195</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1595810447195</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Added Auth">
-      <created>1595810625164</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1595810625164</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Added Auth">
-      <created>1595810874221</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1595810874221</updated>
+      <workItem from="1594995425608" duration="90216000" />
     </task>
     <task id="LOCAL-00069" summary="Added Auth">
       <created>1595811102730</created>
@@ -407,7 +370,42 @@
       <option name="project" value="LOCAL" />
       <updated>1595986352791</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="Added Auth">
+      <created>1595986682402</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1595986682402</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Added Auth">
+      <created>1596035257289</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1596035257289</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Added Auth">
+      <created>1596035852632</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1596035852632</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Added Auth">
+      <created>1596036070823</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1596036070823</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Added Auth">
+      <created>1596036913707</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1596036913707</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
