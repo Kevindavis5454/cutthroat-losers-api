@@ -16,11 +16,13 @@ const userAuth = (request, response) => {
         }
         if (results.rows[0].password == password) {
             response.cookie('user_id', results.rows[0].user_id, {
-                httpOnly: true,
+                httpOnly: false,
+                maxAge: 65000,
                 signed: false,
                 sameSite: 'none',
-                secure: true,
+                secure: false,
             });
+            console.log(response.cookie)
             response.send('')
         }
     })
