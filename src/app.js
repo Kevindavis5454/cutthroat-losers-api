@@ -50,6 +50,7 @@ app.get('/api/bingo_item', db.getBingoItems)
 app.get('/api/contest_to_user', db.getContestToUser)
 app.get('/api/contest_to_user/:id', db.getContestsToUserById)
 
+app.post('/api/contests', db.contestAuth)
 app.get('/api/contests', db.getContests)
 app.get('/api/contests/:id', db.getContestById)
 app.post('/api/contests', db.createContest)

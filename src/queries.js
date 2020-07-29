@@ -23,7 +23,27 @@ const userAuth = (request, response) => {
                 secure: false,
             });
             console.log(response.cookie)
-            response.send(`${results.rows[0].user_id}`)
+            response.send(``)
+        }
+    })
+}
+const contestAuth = (request, response) => {
+    const { contest_id } = request.body
+    pool.query('SELECT * FROM contests WHERE contest_id = $1', [contest_id], (error, results) => {
+        console.log(results)
+        if (error) {
+            throw error
+        }
+        else {
+            response.cookie('contest_id', results.contest_id, {
+                httpOnly: false,
+                maxAge: 65000,
+                signed: false,
+                sameSite: 'none',
+                secure: false,
+            });
+            console.log(response.cookie)
+            response.send(``)
         }
     })
 }
