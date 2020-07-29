@@ -22,7 +22,7 @@ app.use(helmet())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded ({extended: false}))
 app.use(cookieParser())
-/*app.use(cors())*/
+// app.use(cors())
 const whitelist = ['app.cutthroatlosers.com', 'http://localhost:3000']
 const corsOptions = {
     origin: function (origin, callback) {
@@ -37,7 +37,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 
-/*app.use('/auth', auth)*/
+// app.use('/auth', auth)
 app.post('/api/login', db.userAuth)
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
