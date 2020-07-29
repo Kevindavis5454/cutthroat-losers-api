@@ -23,7 +23,7 @@ const userAuth = (request, response) => {
                 secure: false,
             });
             console.log(response.cookie)
-            response.send('')
+            response.send(`${results.rows[0].user_id}`)
         }
     })
 }
@@ -58,7 +58,7 @@ const getUserByUsername = (request, response) => {
         if (error) {
             throw error
         }
-        response.status(200).json(results)
+        response.status(200).json(results.rows)
     })
 }
 
