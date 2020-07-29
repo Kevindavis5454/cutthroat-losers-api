@@ -177,6 +177,7 @@ module.exports = {
     updateUser,
     deleteUser,
     userAuth,
+    contestAuth,
     getBingoItems,
     getContestToUser,
     getContests,
