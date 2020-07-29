@@ -131,7 +131,7 @@ const getContestToUser = (request, response) => {
 const getContestsById = (request, response) => {
     const user_id = parseInt(request.params.id)
 
-    pool.query('SELECT * FROM contests_to_user WHERE user_id = $1', [user_id], (error, results) => {
+    pool.query('SELECT * FROM contest_to_user WHERE user_id = $1', [user_id], (error, results) => {
         if (error) {
             throw error
         }
