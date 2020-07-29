@@ -35,7 +35,7 @@ const contestAuth = (request, response) => {
             throw error
         }
         else {
-            response.cookie('contest_id', results.contest_id, {
+            response.cookie('contest_id', results[0].id, {
                 httpOnly: false,
                 maxAge: 65000,
                 signed: false,
