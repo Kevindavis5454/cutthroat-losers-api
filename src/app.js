@@ -21,7 +21,7 @@ app.use(helmet())
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded ({extended: false}))
-app.use(cookieParser())
+app.use(cookieParser("tinybluedog"))
 /*app.use(cors())*/
 const whitelist = ['app.cutthroatlosers.com', 'http://localhost:3000']
 const corsOptions = {

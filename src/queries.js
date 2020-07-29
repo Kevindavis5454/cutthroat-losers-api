@@ -16,7 +16,7 @@ const userAuth = (request, response) => {
         }
         if (results.rows[0].password == password) {
             response.cookie('user_id', results.rows[0].user_id, {
-                httpOnly: false,
+                httpOnly: true,
                 signed: false,
                 sameSite: 'none',
                 secure: true,
