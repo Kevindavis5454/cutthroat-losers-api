@@ -51,17 +51,6 @@ const getUserById = (request, response) => {
     })
 }
 
-const getUserByUsername = (request, response) => {
-    const  username  = request.params.username
-
-    pool.query('SELECT * FROM users WHERE username = $1', [username], (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(200).json(results.rows)
-    })
-}
-
 const createUser = (request, response) => {
     const { display_name, username, password} = request.body
         pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, password], (error, results) => {
@@ -139,6 +128,16 @@ const getContestToUser = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
+const getContestsById = (request, response) => {
+    const user_id = parseInt(request.params.id)
+
+    pool.query('SELECT * FROM contests_to_user WHERE user_id = $1', [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
 
 
 module.exports = {
@@ -152,6 +151,6 @@ module.exports = {
     getContestToUser,
     getContests,
     createContest,
-    getUserByUsername
+    getContestsById
 }
 

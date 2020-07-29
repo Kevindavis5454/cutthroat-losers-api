@@ -41,7 +41,6 @@ app.use(cors(corsOptions))
 app.post('/api/login', db.userAuth)
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
-app.get('/api/users/:username', db.getUserByUsername)
 app.post('/api/signup', db.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
@@ -51,6 +50,7 @@ app.get('/api/bingo_item', db.getBingoItems)
 app.get('/api/contest_to_user', db.getContestToUser)
 
 app.get('/api/contests', db.getContests)
+app.get('/api/contests/:id', db.getContestsById)
 app.post('/api/contests', db.createContest)
 
 
