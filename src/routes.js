@@ -6,7 +6,6 @@ const userAuth = (request, response) => {
             db.userAuth(username, password, function(results){
                 if (results.rows[0].password == password) {
                     response.cookie('user_id', results.rows[0].user_id, {
-                        domain: '.herokuapp.com',
                         httpOnly: false,
                         expires: new Date(Date.now() + 12 * 3600000),
                         signed: false,
