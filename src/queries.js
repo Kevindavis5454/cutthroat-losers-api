@@ -7,24 +7,13 @@ const pool = new Pool({
 
 });
 
-const userAuth = (request, response) => {
-    const { username, password } = request.body
+const userAuth = (username, password, cb) => {
     pool.query('SELECT password, user_id FROM users WHERE username = $1', [username], (error, results) => {
         console.log(results.rows[0].password)
         if (error) {
             throw error
         }
-        if (results.rows[0].password == password) {
-            response.cookie('user_id', results.rows[0].user_id, {
-                httpOnly: false,
-                maxAge: 65000,
-                signed: false,
-                sameSite: 'none',
-                secure: true
-            });
-            console.log(response.cookie)
-            response.send(``)
-        }
+        cb(results)
     })
 }
 const contestAuth = (request, response) => {
