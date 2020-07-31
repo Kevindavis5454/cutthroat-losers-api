@@ -60,14 +60,22 @@ const getUserById = (request, response) => {
     })
 }
 
-const createUser = (request, response) => {
-    const { display_name, username, password} = request.body
-        pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, password], (error, results) => {
-            if (error) {
-                throw error
-            }
-            response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
-        })
+const getUserByUsername = (username, cb) => {
+    pool.query('SELECT * FROM users WHERE username = $1', [username], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const createUser= (display_name, username, password, cb) => {
+    pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, password], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
 }
 
 const updateUser = (request, response) => {
@@ -171,7 +179,6 @@ const contestInfo = ( contest_id, cb ) => {
 
 const getContestId = (contest_name, cb ) => {
     pool.query('SELECT contest_id FROM contests WHERE contest_name = $1', [contest_name], (error, results) => {
-        console.log(results)
         if (error) {
             throw error
         }
@@ -183,6 +190,7 @@ const getContestId = (contest_name, cb ) => {
 module.exports = {
     getUsers,
     getUserById,
+    getUserByUsername,
     createUser,
     updateUser,
     deleteUser,

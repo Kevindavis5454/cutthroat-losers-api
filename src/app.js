@@ -42,7 +42,7 @@ app.use(cors(corsOptions))
 app.post('/api/login', routes.userAuth)
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
-app.post('/api/signup', db.createUser)
+app.post('/api/signup', routes.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
 
