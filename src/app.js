@@ -7,6 +7,7 @@ const { NODE_ENV } = require('./config')
 const db = require('./queries');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
+const routes = require('./routes')
 
 
 
@@ -38,7 +39,7 @@ app.use(cors(corsOptions))
 
 
 // app.use('/auth', auth)
-app.post('/api/login', db.userAuth)
+app.post('/api/login', routes.userAuth)
 app.get('/api/users', db.getUsers)
 app.get('/api/users/:id', db.getUserById)
 app.post('/api/signup', db.createUser)
@@ -54,6 +55,9 @@ app.post('/api/contests/auth', db.contestAuth)
 app.get('/api/contests', db.getContests)
 app.get('/api/contests/:id', db.getContestById)
 app.post('/api/contests', db.createContest)
+
+app.post('/api/contests/contestInfo', routes.contestInfo)
+app.post('/api/contests/getContestId', routes.getContestId)
 
 
 

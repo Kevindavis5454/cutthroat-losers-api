@@ -7,24 +7,13 @@ const pool = new Pool({
 
 });
 
-const userAuth = (request, response) => {
-    const { username, password } = request.body
+const userAuth = (username, password, cb) => {
     pool.query('SELECT password, user_id FROM users WHERE username = $1', [username], (error, results) => {
         console.log(results.rows[0].password)
         if (error) {
             throw error
         }
-        if (results.rows[0].password == password) {
-            response.cookie('user_id', results.rows[0].user_id, {
-                httpOnly: false,
-                maxAge: 65000,
-                signed: false,
-                sameSite: 'none',
-                secure: true
-            });
-            console.log(response.cookie)
-            response.send(``)
-        }
+        cb(results)
     })
 }
 const contestAuth = (request, response) => {
@@ -169,6 +158,27 @@ const getContestsToUserById = (request, response) => {
     })
 }
 
+const contestInfo = ( contest_id, cb ) => {
+    pool.query('SELECT * FROM contest_to_user, contests, measurements, points, sabotage, sabotage_to_user, weighin, win, win_to_user, workout_tracking WHERE contests.contest_id = $1',
+        [contest_id], (error, results) => {
+        console.log(results)
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const getContestId = (contest_name, cb ) => {
+    pool.query('SELECT contest_id FROM contests WHERE contest_name = $1', [contest_name], (error, results) => {
+        console.log(results)
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 
 module.exports = {
     getUsers,
@@ -183,6 +193,9 @@ module.exports = {
     getContests,
     createContest,
     getContestsToUserById,
-    getContestById
+    getContestById,
+    getContestId,
+    contestInfo,
+
 }
 
