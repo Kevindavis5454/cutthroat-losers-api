@@ -22,27 +22,16 @@ const userAuth = (request, response) => {
 const contestInfo = (request, response) => {
     const { contest_id } = request.body
     db.contestInfo(contest_id, function(results) {
-        if (results) {
-            console.log('Yay There is data!')
-        }
+        console.log('Yay There is data!')
         response.status(200).json(results.rows)
     })
 }
 
 const getContestId = (request, response) => {
-    const { contest_name } = request.params.contestName
+    const { contest_name } = request.body
     db.getContestId(contest_name, function(results) {
-        if (results) {
-            response.cookie('contest_id', results.rows[0].contest_id, {
-                httpOnly: false,
-                expires: new Date(Date.now() + 12 * 3600000),
-                signed: false,
-                sameSite: 'none',
-                secure: true
-            })
+            console.log('yay we got data!')
             response.status(200).json(results.rows)
-
-        }
     })
 }
 
