@@ -56,6 +56,9 @@ app.get('/api/contests', db.getContests)
 app.get('/api/contests/:id', db.getContestById)
 app.post('/api/contests', db.createContest)
 
+app.post('/api/contests/contestInfo', routes.contestInfo)
+app.get('/api/contests/:contestName', routes.getContestId)
+
 
 
 app.use(function errorHandler(err, req, res, next) {
