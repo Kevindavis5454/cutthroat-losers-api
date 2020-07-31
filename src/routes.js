@@ -12,7 +12,7 @@ function validUser(user) {
 const createUser = (request, response, next) => {
     const { display_name, username, password} = request.body
     if (validUser(request.body)) {
-        db.getUserByUsername(username)
+        db.getUserByUsername(username, function(results) {})
             .then(user => {
                 if (!user) {
                     //this is a unique email
@@ -33,7 +33,7 @@ const createUser = (request, response, next) => {
 const userAuth = (request, response, next) => {
     const { username, password } = request.body
     if (validUser(request.body)) {
-        db.getUserByUsername(username)
+        db.getUserByUsername(username, function(results){})
             .then(user => {
                 if (user){
                     db.userAuth(username, password, function(results){
