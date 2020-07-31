@@ -159,7 +159,7 @@ const getContestsToUserById = (request, response) => {
 }
 
 const contestInfo = ( contest_id, cb ) => {
-    pool.query('SELECT * FROM contest_to_user, contests, measurements, points, sabotage, sabotage_to_user, weighin, win, win_to_user, workout_tracking WHERE contest_id = $1',
+    pool.query('SELECT * FROM contest_to_user, contests, measurements, points, sabotage, sabotage_to_user, weighin, win, win_to_user, workout_tracking WHERE contests.contest_id = $1',
         [contest_id], (error, results) => {
         console.log(results)
         if (error) {
