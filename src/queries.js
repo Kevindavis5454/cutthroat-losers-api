@@ -166,16 +166,6 @@ const getContestsToUserById = (request, response) => {
     })
 }
 
-const contestInfo = ( contest_id, cb ) => {
-    pool.query('SELECT * FROM contest_to_user, contests, measurements, points, sabotage, sabotage_to_user, weighin, win, win_to_user, workout_tracking WHERE contests.contest_id = $1',
-        [contest_id], (error, results) => {
-        console.log(results)
-        if (error) {
-            throw error
-        }
-        cb(results)
-    })
-}
 
 const getContestId = (contest_name, cb ) => {
     pool.query('SELECT contest_id FROM contests WHERE contest_name = $1', [contest_name], (error, results) => {
@@ -186,6 +176,43 @@ const getContestId = (contest_name, cb ) => {
     })
 }
 
+// CONTEST INFO QUERIES
+
+const contestMeasurements = (contest_id, cb) => {
+    pool.query('SELECT * FROM measurements WHERE contest_id = $1', [contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const contestWeighins = (contest_id, cb) => {
+    pool.query('SELECT * FROM weighin WHERE contest_id = $1', [contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const contestPoints = (contest_id, cb) => {
+    pool.query('SELECT * FROM points WHERE contest_id = $1', [contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const contestSabotages = (contest_id, cb) => {
+    pool.query('SELECT * FROM sabotages WHERE contest_id = $1', [contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
 
 module.exports = {
     getUsers,
@@ -203,7 +230,10 @@ module.exports = {
     getContestsToUserById,
     getContestById,
     getContestId,
-    contestInfo,
+    contestMeasurements,
+    contestWeighins,
+    contestPoints,
+    contestSabotages,
 
 }
 

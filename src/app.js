@@ -56,8 +56,12 @@ app.get('/api/contests', db.getContests)
 app.get('/api/contests/:id', db.getContestById)
 app.post('/api/contests', db.createContest)
 
-app.post('/api/contests/contestInfo', routes.contestInfo)
 app.post('/api/contests/getContestId', routes.getContestId)
+
+app.get('/api/contestInfo/measurements', routes.contestMeasurements)
+app.get('/api/contestInfo/weighins', routes.contestWeighins)
+app.get('/api/contestInfo/points', routes.contestPoints)
+app.get('/api/contestInfo/sabotages', routes.contestSabotages)
 
 
 

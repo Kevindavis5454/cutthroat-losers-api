@@ -58,13 +58,6 @@ const userAuth = (request, response, next) => {
     }
 }
 
-const contestInfo = (request, response) => {
-    const { contest_id } = request.body
-    db.contestInfo(contest_id, function(results) {
-        console.log(results)
-        response.status(200).json(results.rows)
-    })
-}
 
 const getContestId = (request, response) => {
     const { contest_name } = request.body
@@ -74,9 +67,58 @@ const getContestId = (request, response) => {
     })
 }
 
+// CONTEST INFO GATHERING
+
+const contestMeasurements = (request, response) => {
+    const { contest_id } = request.query
+    db.contestMeasurements(contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no measurements for that contest')
+        }
+    })
+}
+
+const contestWeighins = (request, response) => {
+    const { contest_id } = request.query
+    db.contestWeighins(contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no weighins for that contest')
+        }
+    })
+}
+
+const contestPoints = (request, response) => {
+    const { contest_id } = request.query
+    db.contestPoints(contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no points for that contest')
+        }
+    })
+}
+
+const contestSabotages = (request, response) => {
+    const { contest_id } = request.query
+    db.contestSabotages(contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no sabotages for that contest')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
-    contestInfo,
     createUser,
+    contestMeasurements,
+    contestWeighins,
+    contestPoints,
+    contestSabotages,
 }
