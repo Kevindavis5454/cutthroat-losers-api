@@ -113,6 +113,28 @@ const contestSabotages = (request, response) => {
     })
 }
 
+const contestUsers = (request, response) => {
+    const { contest_id } = request.query
+    db.contestUsers(contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no users for that contest')
+        }
+    })
+}
+
+const contestUsersInfo = (request, response) => {
+    const { user_id } = request.query
+    db.contestUsersInfo(user_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no users for that contest')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -121,4 +143,6 @@ module.exports = {
     contestWeighins,
     contestPoints,
     contestSabotages,
+    contestUsers,
+    contestUsersInfo,
 }

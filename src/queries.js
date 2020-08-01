@@ -214,6 +214,25 @@ const contestSabotages = (contest_id, cb) => {
     })
 }
 
+const contestUsers = (contest_id, cb) => {
+    pool.query('SELECT * FROM contest_to_user WHERE contest_id = $1', [contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const contestUsersInfo = (user_id, cb) => {
+    pool.query('SELECT * FROM users WHERE user_id = $1', [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+
 module.exports = {
     getUsers,
     getUserById,
@@ -234,6 +253,8 @@ module.exports = {
     contestWeighins,
     contestPoints,
     contestSabotages,
+    contestUsers,
+    contestUsersInfo,
 
 }
 
