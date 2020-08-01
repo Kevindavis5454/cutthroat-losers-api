@@ -224,7 +224,7 @@ const contestUsers = (contest_id, cb) => {
 }
 
 const contestUsersInfo = (user_id, cb) => {
-    pool.query('SELECT display_name FROM users WHERE user_id = $1', [user_id], (error, results) => {
+    pool.query('SELECT * FROM users WHERE user_id = $1', [user_id], (error, results) => {
         if (error) {
             throw error
         }
