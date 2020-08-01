@@ -206,7 +206,7 @@ const contestPoints = (contest_id, cb) => {
 }
 
 const contestSabotages = (contest_id, cb) => {
-    pool.query('SELECT * FROM sabotages WHERE contest_id = $1', [contest_id], (error, results) => {
+    pool.query('SELECT * FROM sabotage WHERE contest_id = $1', [contest_id], (error, results) => {
         if (error) {
             throw error
         }
