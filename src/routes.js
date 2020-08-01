@@ -61,7 +61,7 @@ const userAuth = (request, response, next) => {
 const contestInfo = (request, response) => {
     const { contest_id } = request.body
     db.contestInfo(contest_id, function(results) {
-        console.log('Yay There is data!')
+        console.log(results)
         response.status(200).json(results.rows)
     })
 }
