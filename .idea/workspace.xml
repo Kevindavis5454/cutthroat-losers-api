@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,14 +63,7 @@
       <updated>1584723396221</updated>
       <workItem from="1584723397324" duration="836000" />
       <workItem from="1593701666857" duration="1700000" />
-      <workItem from="1594995425608" duration="122840000" />
-    </task>
-    <task id="LOCAL-00087" summary="Added Auth">
-      <created>1595873603810</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1595873603810</updated>
+      <workItem from="1594995425608" duration="123317000" />
     </task>
     <task id="LOCAL-00088" summary="Added Auth">
       <created>1595873968060</created>
@@ -410,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596317648168</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="Working on Contest Data pull">
+      <created>1596327167772</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1596327167772</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
