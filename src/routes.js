@@ -139,6 +139,7 @@ const contestUserCurrentWeight = (request, response) => {
     const { user_id, contest_id} = request.query
     db.contestUserCurrentWeight(user_id, contest_id, function(results) {
         if (results) {
+            console.log(results)
             response.status(200).json(results.rows)
         }else {
             response.send('There was no weight for that contest')
