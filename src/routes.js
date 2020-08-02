@@ -135,6 +135,17 @@ const contestUsersInfo = (request, response) => {
     })
 }
 
+const contestUserCurrentWeight = (request, response) => {
+    const { user_id, contest_id} = request.query
+    db.contestUserCurrentWeight(user_id, contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no weight for that contest')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -145,4 +156,5 @@ module.exports = {
     contestSabotages,
     contestUsers,
     contestUsersInfo,
+    contestUserCurrentWeight,
 }
