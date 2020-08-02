@@ -224,7 +224,7 @@ const contestUsers = (contest_id, cb) => {
 }
 
 const contestUsersInfo = (user_id, cb) => {
-    pool.query('SELECT users.user_id, users.display_name, weighin.weight  FROM users INNER JOIN weighin WHERE users.user_id = $1 AND date_created = (SELECT MAX(date_created) FROM weighin)', [user_id], (error, results) => {
+    pool.query('SELECT users.user_id, users.display_name, weighin.weight  FROM users INNER JOIN weighin WHERE user_id = $1 AND date_created = (SELECT MAX(date_created) FROM weighin)', [user_id], (error, results) => {
         if (error) {
             throw error
         }
