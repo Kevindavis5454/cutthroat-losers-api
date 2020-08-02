@@ -224,7 +224,7 @@ const contestUsers = (contest_id, cb) => {
 }
 
 const contestUsersInfo = (user_id, cb) => {
-    pool.query('SELECT users.user_id, users.display_name, weighin.weight  FROM users INNER JOIN weighin WHERE user_id = $1 AND date_created = (SELECT MAX(date_created) FROM weighin)', [user_id], (error, results) => {
+    pool.query('SELECT * FROM users  WHERE user_id = $1', [user_id], (error, results) => {
         if (error) {
             throw error
         }
@@ -233,7 +233,7 @@ const contestUsersInfo = (user_id, cb) => {
 }
 
 const contestUserCurrentWeight = (user_id, contest_id, cb) => {
-    pool.query('SELECT weight FROM weighin WHERE user_id = $1 AND contest_id = $2 ORDER BY date_created DESC FETCH FIRST ROW ONLY', [user_id, contest_id], (error, results) => {
+    pool.query('SELECT weight FROM weighin WHERE user_id = $1 AND contest_id =$2 ORDER BY date_created DESC FETCH FIRST ROW ONLY', [user_id, contest_id], (error, results) => {
         if (error) {
             throw error
         }
