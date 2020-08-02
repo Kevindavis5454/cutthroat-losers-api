@@ -58,7 +58,7 @@ const userAuth = (request, response, next) => {
     }
 }
 
-
+// CONTEST INFO GATHERING
 const getContestId = (request, response) => {
     const { contest_name } = request.body
     db.getContestId(contest_name, function(results) {
@@ -67,7 +67,7 @@ const getContestId = (request, response) => {
     })
 }
 
-// CONTEST INFO GATHERING
+
 
 const contestMeasurements = (request, response) => {
     const { contest_id } = request.query
