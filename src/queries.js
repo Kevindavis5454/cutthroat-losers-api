@@ -233,7 +233,7 @@ const contestUsersInfo = (user_id, cb) => {
 }
 
 const contestUserCurrentWeight = (user_id, contest_id, cb) => {
-    pool.query('SELECT weight FROM weighin WHERE user_id = $1 AND contest_id =$2 ORDER BY date_created DESC FETCH FIRST ROW ONLY', [user_id, contest_id], (error, results) => {
+    pool.query('SELECT weight, user_id FROM weighin WHERE user_id = $1 AND contest_id =$2 ORDER BY date_created DESC FETCH FIRST ROW ONLY', [user_id, contest_id], (error, results) => {
         if (error) {
             throw error
         }
