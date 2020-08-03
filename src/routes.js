@@ -148,7 +148,7 @@ const contestUserCurrentWeight = (request, response) => {
 }
 
 const contestUserStats = (request, response) => {
-    const { user_id } = request.query
+    const  user_id  = request.query
     db.contestUserStats(user_id, function(results) {
         if (results) {
             console.log(results)
