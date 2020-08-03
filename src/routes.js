@@ -152,7 +152,7 @@ const contestUserStats = (request, response) => {
     db.contestUserStats(user_id, function(results) {
         if (results) {
             console.log(results)
-            response.status(200).json(results)
+            response.status(200).json(results.rows)
         }else {
             response.send('That user has no current stats')
         }
