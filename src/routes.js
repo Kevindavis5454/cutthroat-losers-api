@@ -147,6 +147,18 @@ const contestUserCurrentWeight = (request, response) => {
     })
 }
 
+const contestUserStats = (request, response) => {
+    const { user_id } = request.query
+    db.contestUserStats(user_id, function(results) {
+        if (results) {
+            console.log(results)
+            response.status(200).json(results)
+        }else {
+            response.send('That user has no current stats')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -158,4 +170,5 @@ module.exports = {
     contestUsers,
     contestUsersInfo,
     contestUserCurrentWeight,
+    contestUserStats,
 }
