@@ -50,7 +50,7 @@ const getUsers = (request, response) => {
 }
 
 const getUserById = (request, response) => {
-    const user_id = request.params.id
+    const user_id = ParseInt(request.params.id)
 
     pool.query('SELECT * FROM users WHERE user_id = $1 ORDER BY user_id ASC', [user_id], (error, results) => {
         if (error) {
