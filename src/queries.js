@@ -250,6 +250,17 @@ const sidebarStats = (contest_id, cb) => {
     })
 }
 
+// Points table
+
+const pointsValue = (user_id, cb) => {
+    pool.query('SELECT * FROM points WHERE user_id = $1', [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 module.exports = {
     getUsers,
     getUserById,
@@ -274,6 +285,7 @@ module.exports = {
     contestUsersInfo,
     contestUserStats,
     sidebarStats,
+    pointsValue,
 
 }
 

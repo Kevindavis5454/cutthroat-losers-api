@@ -67,6 +67,8 @@ app.get('/api/contestInfo/contestUsersInfo', routes.contestUsersInfo)
 app.get('/api/contestInfo/currentStats', routes.contestUserStats)
 app.get('/api/contestInfo/sidebarStats', routes.sidebarStats)
 
+app.get('/api/points', routes.pointsValue)
+
 
 
 app.use(function errorHandler(err, req, res, next) {
