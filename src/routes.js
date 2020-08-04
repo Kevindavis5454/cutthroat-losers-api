@@ -81,8 +81,8 @@ const contestMeasurements = (request, response) => {
 }
 
 const contestWeighins = (request, response) => {
-    const { contest_id } = request.query
-    db.contestWeighins(contest_id, function(results) {
+    const { contest_id, user_id } = request.query
+    db.contestWeighins(contest_id, user_id, function(results) {
         if (results) {
             response.status(200).json(results.rows)
         }else {

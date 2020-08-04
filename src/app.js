@@ -59,7 +59,7 @@ app.post('/api/contests', db.createContest)
 // Collect Selected Contest Info
 app.post('/api/contests/getContestId', routes.getContestId)
 app.get('/api/contestInfo/measurements', routes.contestMeasurements)
-app.get('/api/contestInfo/weighins', routes.contestWeighins)
+app.get('/api/contestInfo/userWeights', routes.contestWeighins)
 app.get('/api/contestInfo/points', routes.contestPoints)
 app.get('/api/contestInfo/sabotages', routes.contestSabotages)
 app.get('/api/contestInfo/contestUsers', routes.contestUsers)
