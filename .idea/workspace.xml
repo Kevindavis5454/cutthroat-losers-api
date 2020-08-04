@@ -60,14 +60,7 @@
       <updated>1584723396221</updated>
       <workItem from="1584723397324" duration="836000" />
       <workItem from="1593701666857" duration="1700000" />
-      <workItem from="1594995425608" duration="143869000" />
-    </task>
-    <task id="LOCAL-00110" summary="Added Auth">
-      <created>1595985816079</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1595985816079</updated>
+      <workItem from="1594995425608" duration="144111000" />
     </task>
     <task id="LOCAL-00111" summary="Added Auth">
       <created>1595985971063</created>
@@ -405,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596584597051</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="Working on Contest Data pull">
+      <created>1596585119225</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1596585119225</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
