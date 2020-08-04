@@ -188,7 +188,7 @@ const contestMeasurements = (contest_id, cb) => {
 }
 
 const contestWeighins = (contest_id, user_id, cb) => {
-    pool.query('SELECT (date_created, weight)::int FROM weighin WHERE contest_id = $1 AND user_id = $2 ORDER BY date_created ASC', [contest_id, user_id], (error, results) => {
+    pool.query('SELECT date_created, (weight)::int FROM weighin WHERE contest_id = $1 AND user_id = $2 ORDER BY date_created ASC', [contest_id, user_id], (error, results) => {
         if (error) {
             throw error
         }
