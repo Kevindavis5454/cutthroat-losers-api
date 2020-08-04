@@ -241,6 +241,15 @@ const contestUserStats = (user_id, cb) => {
     })
 }
 
+const sidebarStats = (contest_id, cb) => {
+    pool.query('SELECT * FROM current_stats  WHERE contest_id = $1', [contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 module.exports = {
     getUsers,
     getUserById,
@@ -264,6 +273,7 @@ module.exports = {
     contestUsers,
     contestUsersInfo,
     contestUserStats,
+    sidebarStats,
 
 }
 

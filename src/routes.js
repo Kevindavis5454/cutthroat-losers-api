@@ -159,6 +159,18 @@ const contestUserStats = (request, response) => {
     })
 }
 
+const sidebarStats = (request, response) => {
+    const { contest_id} = request.query
+    db.sidebarStats(contest_id, function(results) {
+        if (results) {
+            console.log(results)
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no info for that contest')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -171,4 +183,5 @@ module.exports = {
     contestUsersInfo,
     contestUserCurrentWeight,
     contestUserStats,
+    sidebarStats,
 }
