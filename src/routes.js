@@ -151,7 +151,7 @@ const contestUserStats = (request, response) => {
     const  user_id  = request.query.user_id
     db.contestUserStats(user_id, function(results) {
         if (results) {
-            console.log(results)
+            /*console.log(results)*/
             response.status(200).json(results.rows)
         }else {
             response.send('That user has no current stats')
@@ -160,10 +160,10 @@ const contestUserStats = (request, response) => {
 }
 
 const sidebarStats = (request, response) => {
-    const { contest_id} = request.query
+    const { contest_id } = request.query
     db.sidebarStats(contest_id, function(results) {
         if (results) {
-            console.log(results)
+            console.log(results, 'SideBar Stats')
             response.status(200).json(results.rows)
         }else {
             response.send('There was no info for that contest')
