@@ -192,6 +192,17 @@ const weightPageStats = (request, response) => {
     })
 }
 
+const contestUserIds = (request, response) => {
+    const { contest_id } = request.query
+    db.contestUsersIds(contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no users for that contest')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -206,5 +217,6 @@ module.exports = {
     contestUserStats,
     sidebarStats,
     pointsValue,
-    weightPageStats
+    weightPageStats,
+    contestUserIds,
 }

@@ -270,6 +270,15 @@ const weightPageStats = (contest_id, user_id, cb) => {
     })
 }
 
+const contestUsersIds = (contest_id, cb) => {
+    pool.query('SELECT user_id FROM contest_to_user WHERE contest_id = $1 ORDER BY user_id ASC', [contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 module.exports = {
     getUsers,
     getUserById,
@@ -296,6 +305,7 @@ module.exports = {
     sidebarStats,
     pointsValue,
     weightPageStats,
+    contestUsersIds,
 
 }
 
