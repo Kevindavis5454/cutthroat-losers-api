@@ -66,6 +66,7 @@ app.get('/api/contestInfo/contestUsers', routes.contestUsers)
 app.get('/api/contestInfo/contestUsersInfo', routes.contestUsersInfo)
 app.get('/api/contestInfo/currentStats', routes.contestUserStats)
 app.get('/api/contestInfo/sidebarStats', routes.sidebarStats)
+app.get('/api/contestInfo/weightPageStats', routes.weightPageStats)
 
 app.get('/api/points', routes.pointsValue)
 
