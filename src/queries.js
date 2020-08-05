@@ -279,6 +279,15 @@ const contestUsersIds = (contest_id, cb) => {
     })
 }
 
+const groupWeightPageStats = (contest_id, user_id, cb) => {
+    pool.query('SELECT display_name FROM current_stats  WHERE contest_id = $1 AND user_id = $2', [contest_id, user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 module.exports = {
     getUsers,
     getUserById,
@@ -306,6 +315,7 @@ module.exports = {
     pointsValue,
     weightPageStats,
     contestUsersIds,
+    groupWeightPageStats,
 
 }
 
