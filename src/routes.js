@@ -196,6 +196,7 @@ const contestUserIds = (request, response) => {
     const { contest_id } = request.query
     db.contestUsersIds(contest_id, function(results) {
         if (results) {
+            console.log(results)
             response.status(200).json(results.rows)
         }else {
             response.send('There was no users for that contest')
