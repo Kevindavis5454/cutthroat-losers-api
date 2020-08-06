@@ -299,8 +299,8 @@ const groupWeightPageStats = (contest_id, user_id, cb) => {
     })
 }
 
-const contestUserWorkoutsFirst = (contest_id, user_id, start_date, week_adjustment1, cb) => {
-    pool.query('SELECT date_created, category FROM workout_tracking  WHERE date_created >= start_date AND date_created <= start_date + week_adjustment1 = $3 AND contest_id = $1 AND user_id = $2', [contest_id, user_id, week_adjustment1], (error, results) => {
+const contestUserWorkoutsFirst = (contest_id, user_id, start_date, cb) => {
+    pool.query('SELECT date_created, category FROM workout_tracking  WHERE date_created >= start_date AND date_created <= start_date + 12 = $3 AND contest_id = $1 AND user_id = $2', [contest_id, user_id], (error, results) => {
         if (error) {
             throw error
         }
