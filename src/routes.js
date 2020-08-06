@@ -226,9 +226,9 @@ const groupWeightPageStats = (request, response) => {
     })
 }
 
-const contestUserWorkoutsFirst = (request, response) => {
-    const { contest_id, user_id, start_date } = request.query
-    db.contestUserWorkoutsFirst(contest_id, user_id, start_date, function(results) {
+const contestUserStrengthWorkouts = (request, response) => {
+    const { contest_id, user_id, category } = request.query
+    db.contestUserStrengthWorkouts(contest_id, user_id, category, function(results) {
         if (results) {
             response.status(200).json(results.rows)
         }else {
@@ -255,5 +255,5 @@ module.exports = {
     contestUserIds,
     groupWeightPageStats,
     bingoPointsValue,
-    contestUserWorkoutsFirst,
+    contestUserStrengthWorkouts,
 }

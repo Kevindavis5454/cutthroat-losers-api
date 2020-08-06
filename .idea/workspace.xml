@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,21 +67,7 @@
       <workItem from="1584723397324" duration="836000" />
       <workItem from="1593701666857" duration="1700000" />
       <workItem from="1594995425608" duration="148219000" />
-      <workItem from="1596647077606" duration="15792000" />
-    </task>
-    <task id="LOCAL-00125" summary="Added Auth">
-      <created>1596210978746</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1596210978746</updated>
-    </task>
-    <task id="LOCAL-00126" summary="Working on Contest Data pull">
-      <created>1596211824180</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1596211824180</updated>
+      <workItem from="1596647077606" duration="16498000" />
     </task>
     <task id="LOCAL-00127" summary="Working on Contest Data pull">
       <created>1596212372212</created>
@@ -409,7 +398,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596729647794</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="Working on Contest Data pull">
+      <created>1596729944747</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1596729944747</updated>
+    </task>
+    <task id="LOCAL-00175" summary="Working on Contest Data pull">
+      <created>1596730136351</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1596730136351</updated>
+    </task>
+    <option name="localTasksCounter" value="176" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
