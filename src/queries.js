@@ -262,7 +262,7 @@ const pointsValue = (user_id, cb) => {
 }
 
 const bingoPointsValue = (user_id, cb) => {
-    pool.query('SELECT * FROM points WHERE category = "bingo" AND user_id = $1', [user_id], (error, results) => {
+    pool.query('SELECT * FROM points WHERE (category = "bingo" AND user_id = $1)', [user_id], (error, results) => {
         if (error) {
             throw error
         }
