@@ -226,9 +226,9 @@ const groupWeightPageStats = (request, response) => {
     })
 }
 
-const contestUserStrengthWorkouts = (request, response) => {
+const contestUserWorkouts = (request, response) => {
     const { contest_id, user_id, category } = request.query
-    db.contestUserStrengthWorkouts(contest_id, user_id, category, function(results) {
+    db.contestUserWorkouts(contest_id, user_id, category, function(results) {
         if (results) {
             response.status(200).json(results.rows)
         }else {
@@ -255,5 +255,5 @@ module.exports = {
     contestUserIds,
     groupWeightPageStats,
     bingoPointsValue,
-    contestUserStrengthWorkouts,
+    contestUserWorkouts,
 }

@@ -299,7 +299,7 @@ const groupWeightPageStats = (contest_id, user_id, cb) => {
     })
 }
 
-const contestUserStrengthWorkouts = (contest_id, user_id, category, cb) => {
+const contestUserWorkouts = (contest_id, user_id, category, cb) => {
     pool.query('SELECT date_created, category FROM workout_tracking  WHERE contest_id = $1 AND user_id = $2 AND category = $3 ORDER BY date_created ASC', [contest_id, user_id, category], (error, results) => {
         if (error) {
             throw error
@@ -337,7 +337,7 @@ module.exports = {
     contestUsersIds,
     groupWeightPageStats,
     bingoPointsValue,
-    contestUserStrengthWorkouts,
+    contestUserWorkouts,
 
 
 }
