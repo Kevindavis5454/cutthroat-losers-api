@@ -71,6 +71,7 @@ app.get('/api/contestInfo/contestUserIds', routes.contestUserIds)
 app.get('/api/contestInfo/groupWeightPageStats', routes.groupWeightPageStats)
 
 app.get('/api/points', routes.pointsValue)
+app.get('/api/points/bingo', routes.bingoPointsValue)
 
 
 

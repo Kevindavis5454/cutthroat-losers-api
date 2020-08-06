@@ -261,6 +261,17 @@ const pointsValue = (user_id, cb) => {
     })
 }
 
+const bingoPointsValue = (user_id, cb) => {
+    pool.query('SELECT * FROM points WHERE category = "bingo" user_id = $1', [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+// ----
+
 const weightPageStats = (contest_id, user_id, cb) => {
     pool.query('SELECT current_weight, goal_weight, display_name FROM current_stats  WHERE contest_id = $1 AND user_id = $2', [contest_id, user_id], (error, results) => {
         if (error) {
@@ -316,6 +327,7 @@ module.exports = {
     weightPageStats,
     contestUsersIds,
     groupWeightPageStats,
+    bingoPointsValue,
 
 }
 
