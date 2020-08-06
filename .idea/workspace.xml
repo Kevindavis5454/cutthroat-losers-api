@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,14 +64,7 @@
       <workItem from="1584723397324" duration="836000" />
       <workItem from="1593701666857" duration="1700000" />
       <workItem from="1594995425608" duration="148219000" />
-      <workItem from="1596647077606" duration="15496000" />
-    </task>
-    <task id="LOCAL-00124" summary="Added Auth">
-      <created>1596204885202</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1596204885202</updated>
+      <workItem from="1596647077606" duration="15792000" />
     </task>
     <task id="LOCAL-00125" summary="Added Auth">
       <created>1596210978746</created>
@@ -411,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596729028598</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="Working on Contest Data pull">
+      <created>1596729647794</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1596729647794</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
