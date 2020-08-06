@@ -168,7 +168,7 @@ const getContestsToUserById = (request, response) => {
 
 
 const getContestId = (contest_name, cb ) => {
-    pool.query('SELECT contest_id FROM contests WHERE contest_name = $1', [contest_name], (error, results) => {
+    pool.query('SELECT * FROM contests WHERE contest_name = $1', [contest_name], (error, results) => {
         if (error) {
             throw error
         }
