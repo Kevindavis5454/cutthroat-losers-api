@@ -70,6 +70,7 @@ app.get('/api/contestInfo/weightPageStats', routes.weightPageStats)
 app.get('/api/contestInfo/contestUserIds', routes.contestUserIds)
 app.get('/api/contestInfo/groupWeightPageStats', routes.groupWeightPageStats)
 app.get('/api/contestInfo/contestUserWorkouts', routes.contestUserWorkouts)
+app.get('/api/contestInfo/weightProgress', routes.weightProgress)
 
 app.get('/api/points', routes.pointsValue)
 app.get('/api/points/bingo', routes.bingoPointsValue)

@@ -308,6 +308,15 @@ const contestUserWorkouts = (contest_id, user_id, category, cb) => {
     })
 }
 
+const weightProgress = (user_id, cb) => {
+    pool.query('SELECT weight FROM weighin WHERE user_id = $1 ORDER BY date_created DESC FIRST ROW ONLY', [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 module.exports = {
     getUsers,
     getUserById,
@@ -338,6 +347,7 @@ module.exports = {
     groupWeightPageStats,
     bingoPointsValue,
     contestUserWorkouts,
+    weightProgress,
 
 
 }
