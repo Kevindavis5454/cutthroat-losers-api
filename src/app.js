@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+const db = require('./queries');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const routes = require('./routes')
@@ -37,25 +38,23 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 
-//Auth
+// app.use('/auth', auth)
 app.post('/api/login', routes.userAuth)
-app.post('/api/contests/auth', routes.contestAuth)
+app.get('/api/users', db.getUsers)
+app.get('/api/users/:id', db.getUserById)
 app.post('/api/signup', routes.createUser)
+app.put('/api/users/:id', db.updateUser)
+app.delete('/api/users/:id', db.deleteUser)
 
-//Users
-app.get('/api/users', routes.getUsers)
-app.get('/api/users/:id', routes.getUserById)
-app.put('/api/users/:id', routes.updateUser)
-app.delete('/api/users/:id', routes.deleteUser)
+app.get('/api/bingo_item', db.getBingoItems)
 
-//Contests by User
-app.get('/api/contest_to_user', routes.getContestToUser)
-app.get('/api/contest_to_user/:id', routes.getContestsToUserById)
+app.get('/api/contest_to_user', db.getContestToUser)
+app.get('/api/contest_to_user/:id', db.getContestsToUserById)
 
-//Contests
-app.get('/api/contests', routes.getContests)
-app.get('/api/contests/:id', routes.getContestById)
-app.post('/api/contests', routes.createContest)
+app.post('/api/contests/auth', db.contestAuth)
+app.get('/api/contests', db.getContests)
+app.get('/api/contests/:id', db.getContestById)
+app.post('/api/contests', db.createContest)
 
 // Collect Selected Contest Info
 app.post('/api/contests/getContestId', routes.getContestId)
@@ -72,6 +71,7 @@ app.get('/api/contestInfo/contestUserIds', routes.contestUserIds)
 app.get('/api/contestInfo/groupWeightPageStats', routes.groupWeightPageStats)
 app.get('/api/contestInfo/contestUserWorkouts', routes.contestUserWorkouts)
 app.get('/api/contestInfo/weightProgress', routes.weightProgress)
+
 app.get('/api/points', routes.pointsValue)
 app.get('/api/points/bingo', routes.bingoPointsValue)
 
