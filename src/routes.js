@@ -58,6 +58,121 @@ const userAuth = (request, response, next) => {
     }
 }
 
+const contestAuth = (request, response) => {
+    const { contest_id } = request.body
+    db.contestAuth(contest_id, function(results) {
+        if (results) {
+            response.cookie('contest_id', results[0].id, {
+                httpOnly: false,
+                maxAge: 65000,
+                signed: false,
+                sameSite: 'none',
+                secure: false,
+            });
+            console.log(response.cookie)
+            response.send(``)
+        }
+    })
+}
+
+const getUsers = (request, response) => {
+    db.getUsers(function (results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no users for that contest')
+        }
+    })
+
+}
+
+const getUserById = (request, response) => {
+    const user_id = parseInt(request.params.id)
+    db.getUserById(user_id, function (results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no users for that contest')
+        }
+    })
+}
+
+const updateUser = (request, response) => {
+    const user_id = parseInt(request.params.id)
+    const { display_name, username, password } = request.body
+    db.updateUser(user_id, display_name, username, password, function (results) {
+        if (results) {
+            response.status(200).send(`User modified with USER ID: ${user_id}`)
+        }else {
+            response.send('There was no users for that contest')
+        }
+    })
+}
+
+const deleteUser = (request, response) => {
+    const user_id = parseInt(request.params.id)
+    db.deleteUser(user_id, function (results) {
+        if (results) {
+            response.status(200).send(`User deleted with USER ID: ${user_id}`)
+        }else {
+            response.send('There was no users for that contest')
+        }
+    })
+}
+
+const getContestToUser = (request, response) => {
+    db.getContestToUser(function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no contests')
+        }
+    })
+}
+
+const getContestToUserById = (request, response) => {
+    const user_id = parseInt(request.params.id)
+    db.getContestsToUserById(user_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no contests matching that User ID')
+        }
+    })
+}
+
+const getContests = (request, response) => {
+    db.getContests(function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no contests')
+        }
+    })
+}
+
+const getContestById = (request, response) => {
+    const contest_id = parseInt(request.params.id)
+    db.getContestById(contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no contests matching that User ID')
+        }
+    })
+}
+
+const createContest = (request, response) => {
+    const { date_start, date_end, contest_name, weighin_day, date_created} = request.body
+    db.createContest(date_start, date_end, contest_name, weighin_day, date_created, function(results) {
+        if (results) {
+            response.status(201).send(`Contest added with CONTEST ID: ${results.rows[0].contest_id}`)
+        }else {
+            response.send('Could Not create contest')
+        }
+    })
+}
+
 // CONTEST INFO GATHERING
 const getContestId = (request, response) => {
     const { contest_name } = request.body
@@ -268,4 +383,14 @@ module.exports = {
     bingoPointsValue,
     contestUserWorkouts,
     weightProgress,
+    contestAuth,
+    getUsers,
+    getUserById,
+    updateUser,
+    deleteUser,
+    getContestToUser,
+    getContestToUserById,
+    getContests,
+    getContestById,
+    createContest,
 }
