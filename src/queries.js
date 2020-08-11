@@ -316,7 +316,7 @@ const groupContestUserWorkouts = (contest_id, user_id, cb) => {
 }
 
 const getMeasurementInfo = (contest_id, user_id, cb) => {
-    pool.query('SELECT SELECT CAST(date_created AS DATE), CAST (measurement AS DOUBLE PRECISION) FROM measurements  WHERE contest_id = $1 AND user_id = $2 ORDER BY date_created ASC', [contest_id, user_id], (error, results) => {
+    pool.query('SELECT CAST(date_created AS DATE), CAST (measurement AS DOUBLE PRECISION) FROM measurements  WHERE contest_id = $1 AND user_id = $2 ORDER BY date_created ASC', [contest_id, user_id], (error, results) => {
         if (error) {
             throw error
         }
