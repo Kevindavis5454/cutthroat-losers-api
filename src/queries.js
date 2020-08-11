@@ -49,14 +49,12 @@ const getUsers = (cb) => {
     })
 }
 
-const getUserById = (request, response) => {
-    const user_id = ParseInt(request.params.id)
-
+const getUserById = (user_id, cb) => {
     pool.query('SELECT * FROM users WHERE user_id = $1 ORDER BY user_id ASC', [user_id], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(200).json(results.rows)
+        cb(results)
     })
 }
 

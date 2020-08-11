@@ -68,6 +68,17 @@ const getUsers = (request, response) => {
     })
 }
 
+const getUsersById = (request, response) => {
+    const user_id = parseInt(request.params.id)
+    db.getUserById(user_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no measurements for that contest')
+        }
+    })
+}
+
 // CONTEST INFO GATHERING
 const getContestId = (request, response) => {
     const { contest_name } = request.body
@@ -291,4 +302,5 @@ module.exports = {
     weightProgress,
     groupContestUserWorkouts,
     getUsers,
+    getUsersById,
 }

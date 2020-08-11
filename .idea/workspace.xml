@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
-    </list>
+    <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,20 +63,6 @@
       <workItem from="1593701666857" duration="1700000" />
       <workItem from="1594995425608" duration="148219000" />
       <workItem from="1596647077606" duration="21563000" />
-    </task>
-    <task id="LOCAL-00137" summary="Working on Contest Data pull">
-      <created>1596327663785</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1596327663785</updated>
-    </task>
-    <task id="LOCAL-00138" summary="Working on Contest Data pull">
-      <created>1596328145228</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1596328145228</updated>
     </task>
     <task id="LOCAL-00139" summary="Working on Contest Data pull">
       <created>1596329660563</created>
@@ -410,7 +393,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597164719425</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <task id="LOCAL-00186" summary="Refactoring Routes">
+      <created>1597164944564</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1597164944564</updated>
+    </task>
+    <task id="LOCAL-00187" summary="Refactoring Routes">
+      <created>1597165168346</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1597165168346</updated>
+    </task>
+    <option name="localTasksCounter" value="188" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,6 +432,7 @@
     <MESSAGE value="Added Passport" />
     <MESSAGE value="Added Auth" />
     <MESSAGE value="Working on Contest Data pull" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on Contest Data pull" />
+    <MESSAGE value="Refactoring Routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring Routes" />
   </component>
 </project>
