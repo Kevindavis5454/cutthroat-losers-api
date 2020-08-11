@@ -58,6 +58,16 @@ const userAuth = (request, response, next) => {
     }
 }
 
+const getUsers = (request, response) => {
+    db.getUsers(function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no measurements for that contest')
+        }
+    })
+}
+
 // CONTEST INFO GATHERING
 const getContestId = (request, response) => {
     const { contest_name } = request.body
@@ -280,4 +290,5 @@ module.exports = {
     contestUserWorkouts,
     weightProgress,
     groupContestUserWorkouts,
+    getUsers,
 }
