@@ -38,7 +38,6 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 
-// app.use('/auth', auth)
 app.post('/api/login', routes.userAuth)
 app.get('/api/users', routes.getUsers)
 app.get('/api/users/:id', db.getUserById)
