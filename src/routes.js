@@ -68,6 +68,16 @@ const getUsers = (request, response) => {
     })
 }
 
+const getContestToUser = (request, response) => {
+    db.getContestToUser(function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no measurements for that contest')
+        }
+    })
+}
+
 
 
 // CONTEST INFO GATHERING
@@ -293,4 +303,5 @@ module.exports = {
     weightProgress,
     groupContestUserWorkouts,
     getUsers,
+    getContestToUser,
 }

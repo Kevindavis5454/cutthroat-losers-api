@@ -134,25 +134,14 @@ const createContest = (request, response) => {
         })
 }
 
-/*BINGO TABLE*/
-
-const getBingoItems = (request, response) => {
-    pool.query('SELECT * FROM bingo_item ORDER BY item_id ASC', (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(200).json(results.rows)
-    })
-}
-
 /*CONTEST TO USER*/
 
-const getContestToUser = (request, response) => {
+const getContestToUser = (cb) => {
     pool.query('SELECT * FROM contest_to_user ORDER BY id ASC', (error, results) => {
         if (error) {
             throw error
         }
-        response.status(200).json(results.rows)
+        cb(results)
     })
 }
 const getContestsToUserById = (request, response) => {
@@ -337,7 +326,6 @@ module.exports = {
     deleteUser,
     userAuth,
     contestAuth,
-    getBingoItems,
     getContestToUser,
     getContests,
     createContest,
