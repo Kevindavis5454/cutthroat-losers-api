@@ -351,6 +351,15 @@ const getMeasurementInfo = (contest_id, user_id, cb) => {
     })
 }
 
+const getUserPoints = (user_id, contest_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category = 'stomach' AND category = 'weight' AND category ='workout' AND category = 'sabotage' AND category = 'block' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 
 
 module.exports = {
@@ -388,6 +397,7 @@ module.exports = {
     weightPointsValue,
     stomachPointsValue,
     workoutPointsValue,
+    getUserPoints,
 
 
 }

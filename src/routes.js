@@ -325,6 +325,17 @@ const getMeasurementInfo = (request, response) => {
     })
 }
 
+const getUserPoints = (request, response) => {
+    const { user_id, contest_id } = request.query
+    db.getUserPoints(user_id, contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no info for that user')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -352,4 +363,5 @@ module.exports = {
     weightPointsValue,
     stomachPointsValue,
     workoutPointsValue,
+    getUserPoints,
 }
