@@ -74,6 +74,8 @@ app.get('/api/contestInfo/measurementInfo', routes.getMeasurementInfo)
 app.get('/api/points', routes.pointsValue)
 app.get('/api/points/bingo', routes.bingoPointsValue)
 app.get('/api/points/weight', routes.weightPointsValue)
+app.get('/api/points/stomach', routes.stomachPointsValue)
+
 
 
 

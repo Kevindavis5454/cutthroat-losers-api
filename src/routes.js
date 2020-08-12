@@ -219,7 +219,17 @@ const weightPointsValue = (request, response) => {
     db.weightPointsValue(user_id, function(results) {
         if (results) {
             response.status(200).json(results.rows)
-            console.log(results.rows)
+        }else {
+            response.send('There was no info for that user')
+        }
+    })
+}
+
+const stomachPointsValue = (request, response) => {
+    const { user_id } = request.query
+    db.stomachPointsValue(user_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
         }else {
             response.send('There was no info for that user')
         }
@@ -329,4 +339,5 @@ module.exports = {
     getContestToUser,
     getMeasurementInfo,
     weightPointsValue,
+    stomachPointsValue,
 }

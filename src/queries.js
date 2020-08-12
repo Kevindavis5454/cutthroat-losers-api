@@ -268,6 +268,15 @@ const weightPointsValue = (user_id, cb) => {
     })
 }
 
+const stomachPointsValue = (user_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category = 'stomach' AND user_id = $1", [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 // ----
 
 const weightPageStats = (contest_id, user_id, cb) => {
@@ -368,6 +377,7 @@ module.exports = {
     groupContestUserWorkouts,
     getMeasurementInfo,
     weightPointsValue,
+    stomachPointsValue,
 
 
 }
