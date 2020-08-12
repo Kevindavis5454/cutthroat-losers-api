@@ -361,7 +361,7 @@ const getUserPoints = (user_id, contest_id, cb) => {
 }
 
 const getPointsGainedStomach = (user_id, contest_id, cb) => {
-    pool.query("SELECT user_id, points FROM points WHERE category='stomach' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='stomach' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
         if (error) {
             throw error
         }
@@ -370,7 +370,7 @@ const getPointsGainedStomach = (user_id, contest_id, cb) => {
 }
 
 const getPointsGainedWeight = (user_id, contest_id, cb) => {
-    pool.query("SELECT user_id, points FROM points WHERE category='weight' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='weight' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
         if (error) {
             throw error
         }
@@ -379,7 +379,7 @@ const getPointsGainedWeight = (user_id, contest_id, cb) => {
 }
 
 const getPointsGainedWorkout = (user_id, contest_id, cb) => {
-    pool.query("SELECT user_id, points FROM points WHERE category='workout' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='workout' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
         if (error) {
             throw error
         }
