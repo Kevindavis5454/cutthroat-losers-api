@@ -72,6 +72,7 @@ app.get('/api/contestInfo/weightProgress', routes.weightProgress)
 app.get('/api/contestInfo/measurementInfo', routes.getMeasurementInfo)
 app.get('/api/contestInfo/getUserPoints', routes.getUserPoints)
 app.get('/api/contestInfo/getPointsGained', routes.getPointsGained)
+app.get('/api/contestInfo/getPointsSpent', routes.getPointsSpent)
 
 app.get('/api/points', routes.pointsValue)
 app.get('/api/points/bingo', routes.bingoPointsValue)
