@@ -74,6 +74,7 @@ app.get('/api/contestInfo/getUserPoints', routes.getUserPoints)
 app.get('/api/contestInfo/getPointsGainedStomach', routes.getPointsGainedStomach)
 app.get('/api/contestInfo/getPointsGainedWeight', routes.getPointsGainedWeight)
 app.get('/api/contestInfo/getPointsGainedWorkout', routes.getPointsGainedWorkout)
+app.get('/api/contestInfo/getPointsGainedBingo', routes.getPointsGainedBingo)
 app.get('/api/contestInfo/getPointsSpentBlock', routes.getPointsSpentBlock)
 app.get('/api/contestInfo/getPointsSpentSabotage', routes.getPointsSpentBlock)
 

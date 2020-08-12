@@ -387,6 +387,15 @@ const getPointsGainedWorkout = (user_id, contest_id, cb) => {
     })
 }
 
+const getPointsGainedBingo = (user_id, contest_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='bingo' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 const getPointsSpentBlock = (user_id, contest_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category='block' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
         if (error) {
@@ -448,6 +457,7 @@ module.exports = {
     getPointsGainedWorkout,
     getPointsSpentBlock,
     getPointsSpentSabotage,
+    getPointsGainedBingo
 
 
 }

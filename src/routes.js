@@ -369,6 +369,17 @@ const getPointsGainedWorkout = (request, response) => {
     })
 }
 
+const getPointsGainedBingo = (request, response) => {
+    const { user_id, contest_id } = request.query
+    db.getPointsGainedBingo(user_id, contest_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no info for that user')
+        }
+    })
+}
+
 const getPointsSpentBlock = (request, response) => {
     const { user_id, contest_id } = request.query
     db.getPointsSpentBlock(user_id, contest_id, function(results) {
@@ -424,4 +435,5 @@ module.exports = {
     getPointsGainedWorkout,
     getPointsSpentBlock,
     getPointsSpentSabotage,
+    getPointsGainedBingo,
 }
