@@ -397,7 +397,7 @@ const getPointsGainedBingo = (user_id, contest_id, cb) => {
 }
 
 const getPointsSpentBlock = (user_id, contest_id, cb) => {
-    pool.query("SELECT SUM(points) FROM points WHERE category='block' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+    pool.query("SELECT * FROM points WHERE category='block' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
         if (error) {
             throw error
         }
@@ -406,7 +406,7 @@ const getPointsSpentBlock = (user_id, contest_id, cb) => {
 }
 
 const getPointsSpentSabotage = (user_id, contest_id, cb) => {
-    pool.query("SELECT SUM(points) FROM points WHERE category='sabotage' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+    pool.query("SELECT * FROM points WHERE category='sabotage' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
         if (error) {
             throw error
         }
