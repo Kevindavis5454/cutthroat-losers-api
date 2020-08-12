@@ -259,6 +259,15 @@ const bingoPointsValue = (user_id, cb) => {
     })
 }
 
+const weightPointsValue = (user_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category = 'weight' AND user_id = $1 ORDER BY user_id ASC", [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 // ----
 
 const weightPageStats = (contest_id, user_id, cb) => {
@@ -358,6 +367,7 @@ module.exports = {
     weightProgress,
     groupContestUserWorkouts,
     getMeasurementInfo,
+    weightPointsValue,
 
 
 }
