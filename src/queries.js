@@ -361,7 +361,7 @@ const getUserPoints = (user_id, contest_id, cb) => {
 }
 
 const getPointsGained = (user_id, contest_id, cb) => {
-    pool.query("SELECT user_id, SUM(points) FROM points WHERE category='stomach' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+    pool.query("SELECT user_id, points FROM points WHERE category='stomach' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
         if (error) {
             throw error
         }
