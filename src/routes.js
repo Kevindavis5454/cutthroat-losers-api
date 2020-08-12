@@ -219,6 +219,7 @@ const weightPointsValue = (request, response) => {
     db.weightPointsValue(user_id, function(results) {
         if (results) {
             response.status(200).json(results.rows)
+            console.log(results.rows)
         }else {
             response.send('There was no info for that user')
         }
