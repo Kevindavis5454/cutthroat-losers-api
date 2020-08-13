@@ -404,7 +404,7 @@ const getPointsSpentSabotage = (request, response) => {
 
 const logWorkout = (request, response) => {
     const { user_id, contest_id, category} = request.body
-    db.createUser(user_id, contest_id, category, function(results){
+    db.logWorkout(user_id, contest_id, category, function(results){
         if (results) {
         response.status(201).send(`Workout added with WORKOUT ID: ${results.rows[0].id}`)
         }else {
