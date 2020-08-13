@@ -250,6 +250,44 @@ const pointsValue = (user_id, cb) => {
     })
 }
 
+const bingoPointsValue = (user_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category = 'bingo' AND user_id = $1", [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const weightPointsValue = (user_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category = 'weight' AND user_id = $1", [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const stomachPointsValue = (user_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category = 'stomach' AND user_id = $1", [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const workoutPointsValue = (user_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category = 'workout' AND user_id = $1", [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+// ----
+
 const weightPageStats = (contest_id, user_id, cb) => {
     pool.query('SELECT current_weight, goal_weight, display_name FROM current_stats  WHERE contest_id = $1 AND user_id = $2', [contest_id, user_id], (error, results) => {
         if (error) {
@@ -322,7 +360,59 @@ const getUserPoints = (user_id, contest_id, cb) => {
     })
 }
 
+const getPointsGainedStomach = (user_id, contest_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='stomach' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
 
+const getPointsGainedWeight = (user_id, contest_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='weight' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const getPointsGainedWorkout = (user_id, contest_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='workout' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const getPointsGainedBingo = (user_id, contest_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='bingo' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const getPointsSpentBlock = (user_id, contest_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='block' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const getPointsSpentSabotage = (user_id, contest_id, cb) => {
+    pool.query("SELECT SUM(points) FROM points WHERE category='sabotage' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
 
 
 
@@ -353,10 +443,21 @@ module.exports = {
     weightPageStats,
     contestUsersIds,
     groupWeightPageStats,
+    bingoPointsValue,
     contestUserWorkouts,
     weightProgress,
     groupContestUserWorkouts,
     getMeasurementInfo,
+    weightPointsValue,
+    stomachPointsValue,
+    workoutPointsValue,
+    getUserPoints,
+    getPointsGainedStomach,
+    getPointsGainedWeight,
+    getPointsGainedWorkout,
+    getPointsSpentBlock,
+    getPointsSpentSabotage,
+    getPointsGainedBingo
 
 
 }
