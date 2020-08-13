@@ -413,6 +413,17 @@ const logWorkout = (request, response) => {
     })
 }
 
+const logWeight = (request, response) => {
+    const { user_id, contest_id, weight} = request.body
+    db.logWeight(user_id, contest_id, weight, function(results){
+        if (results) {
+            response.status(201).send(`Weigh-in added with WEIGH-IN ID: ${results.rows[0].id}`)
+        }else {
+            response.send('Workout could not be added')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -448,4 +459,5 @@ module.exports = {
     getPointsSpentSabotage,
     getPointsGainedBingo,
     logWorkout,
+    logWeight,
 }

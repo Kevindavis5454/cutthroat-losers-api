@@ -85,6 +85,8 @@ app.get('/api/points/stomach', routes.stomachPointsValue)
 app.get('/api/points/workout', routes.workoutPointsValue)
 
 app.post('/api/contestInfo/logWorkout', routes.logWorkout)
+app.post('/api/contestInfo/logWeight', routes.logWeight)
+
 
 
 
