@@ -402,6 +402,17 @@ const getPointsSpentSabotage = (request, response) => {
     })
 }
 
+const logWorkout = (request, response) => {
+    const { user_id, contest_id, category} = request.body
+    db.createUser(user_id, contest_id, category, function(results){
+        if (results) {
+        response.status(201).send(`Workout added with WORKOUT ID: ${results.rows[0].id}`)
+        }else {
+            response.send('Workout could not be added')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -436,4 +447,5 @@ module.exports = {
     getPointsSpentBlock,
     getPointsSpentSabotage,
     getPointsGainedBingo,
+    logWorkout,
 }

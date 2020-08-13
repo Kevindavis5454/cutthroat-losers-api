@@ -414,6 +414,15 @@ const getPointsSpentSabotage = (user_id, contest_id, cb) => {
     })
 }
 
+const logWorkout = (user_id, contest_id, category, cb) => {
+    pool.query('INSERT INTO workout_tracking (user_id, contest_id, category) VALUES ($1, $2, $3) RETURNING id', [user_id, contest_id, category], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 
 
 module.exports = {
@@ -457,7 +466,8 @@ module.exports = {
     getPointsGainedWorkout,
     getPointsSpentBlock,
     getPointsSpentSabotage,
-    getPointsGainedBingo
+    getPointsGainedBingo,
+    logWorkout,
 
 
 }
