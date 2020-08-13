@@ -203,50 +203,6 @@ const pointsValue = (request, response) => {
     })
 }
 
-const bingoPointsValue = (request, response) => {
-    const { user_id } = request.query
-    db.bingoPointsValue(user_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
-
-const weightPointsValue = (request, response) => {
-    const { user_id } = request.query
-    db.weightPointsValue(user_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
-
-const stomachPointsValue = (request, response) => {
-    const { user_id } = request.query
-    db.stomachPointsValue(user_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
-
-const workoutPointsValue = (request, response) => {
-    const { user_id } = request.query
-    db.workoutPointsValue(user_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
-
 const weightPageStats = (request, response) => {
     const { contest_id, user_id } = request.query
     db.weightPageStats(contest_id, user_id, function(results) {
@@ -336,71 +292,6 @@ const getUserPoints = (request, response) => {
     })
 }
 
-const getPointsGainedStomach = (request, response) => {
-    const { user_id, contest_id } = request.query
-    db.getPointsGainedStomach(user_id, contest_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
-
-const getPointsGainedWeight = (request, response) => {
-    const { user_id, contest_id } = request.query
-    db.getPointsGainedWeight(user_id, contest_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
-
-const getPointsGainedWorkout = (request, response) => {
-    const { user_id, contest_id } = request.query
-    db.getPointsGainedWorkout(user_id, contest_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
-
-const getPointsGainedBingo = (request, response) => {
-    const { user_id, contest_id } = request.query
-    db.getPointsGainedBingo(user_id, contest_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
-
-const getPointsSpentBlock = (request, response) => {
-    const { user_id, contest_id } = request.query
-    db.getPointsSpentBlock(user_id, contest_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
-
-const getPointsSpentSabotage = (request, response) => {
-    const { user_id, contest_id } = request.query
-    db.getPointsSpentSabotage(user_id, contest_id, function(results) {
-        if (results) {
-            response.status(200).json(results.rows)
-        }else {
-            response.send('There was no info for that user')
-        }
-    })
-}
 
 module.exports = {
     userAuth,
@@ -419,21 +310,11 @@ module.exports = {
     weightPageStats,
     contestUserIds,
     groupWeightPageStats,
-    bingoPointsValue,
     contestUserWorkouts,
     weightProgress,
     groupContestUserWorkouts,
     getUsers,
     getContestToUser,
     getMeasurementInfo,
-    weightPointsValue,
-    stomachPointsValue,
-    workoutPointsValue,
     getUserPoints,
-    getPointsGainedStomach,
-    getPointsGainedWeight,
-    getPointsGainedWorkout,
-    getPointsSpentBlock,
-    getPointsSpentSabotage,
-    getPointsGainedBingo,
 }

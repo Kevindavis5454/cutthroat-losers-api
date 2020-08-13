@@ -71,18 +71,8 @@ app.get('/api/contestInfo/groupContestUserWorkouts', routes.groupContestUserWork
 app.get('/api/contestInfo/weightProgress', routes.weightProgress)
 app.get('/api/contestInfo/measurementInfo', routes.getMeasurementInfo)
 app.get('/api/contestInfo/getUserPoints', routes.getUserPoints)
-app.get('/api/contestInfo/getPointsGainedStomach', routes.getPointsGainedStomach)
-app.get('/api/contestInfo/getPointsGainedWeight', routes.getPointsGainedWeight)
-app.get('/api/contestInfo/getPointsGainedWorkout', routes.getPointsGainedWorkout)
-app.get('/api/contestInfo/getPointsGainedBingo', routes.getPointsGainedBingo)
-app.get('/api/contestInfo/getPointsSpentBlock', routes.getPointsSpentBlock)
-app.get('/api/contestInfo/getPointsSpentSabotage', routes.getPointsSpentSabotage)
 
 app.get('/api/points', routes.pointsValue)
-app.get('/api/points/bingo', routes.bingoPointsValue)
-app.get('/api/points/weight', routes.weightPointsValue)
-app.get('/api/points/stomach', routes.stomachPointsValue)
-app.get('/api/points/workout', routes.workoutPointsValue)
 
 
 
