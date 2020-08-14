@@ -450,6 +450,15 @@ const logPointsWorkout = (user_id, contest_id, category, points, win_id , cb) =>
     })
 }
 
+const adminWeightProgress = (user_id, cb) => {
+    pool.query('SELECT CAST(weight AS DOUBLE PRECISION) FROM weighin WHERE user_id = $1 ORDER BY date_created ASC LIMIT 1', [user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 
 
 module.exports = {
@@ -498,6 +507,7 @@ module.exports = {
     logWeight,
     logMeasurement,
     logPointsWorkout,
+    adminWeightProgress,
 
 
 }
