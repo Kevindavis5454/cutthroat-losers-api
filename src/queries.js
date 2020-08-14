@@ -451,7 +451,7 @@ const logPointsWorkout = (user_id, contest_id, category, points, win_id , cb) =>
 }
 
 const adminWeightProgress = (user_id, cb) => {
-    pool.query('SELECT CAST(weight AS DOUBLE PRECISION), date_created FROM weighin WHERE user_id = $1 ORDER BY date_created ASC LIMIT 2', [user_id], (error, results) => {
+    pool.query('SELECT CAST(weight AS DOUBLE PRECISION), date_created FROM weighin WHERE user_id = $1 ORDER BY date_created DESC LIMIT 2', [user_id], (error, results) => {
         if (error) {
             throw error
         }
@@ -460,7 +460,7 @@ const adminWeightProgress = (user_id, cb) => {
 }
 
 const adminMeasurementProgress = (user_id, cb) => {
-    pool.query('SELECT CAST(measurement AS DOUBLE PRECISION), date_created FROM measurements WHERE user_id = $1 ORDER BY date_created ASC LIMIT 2', [user_id], (error, results) => {
+    pool.query('SELECT CAST(measurement AS DOUBLE PRECISION), date_created FROM measurements WHERE user_id = $1 ORDER BY date_created DESC LIMIT 2', [user_id], (error, results) => {
         if (error) {
             throw error
         }

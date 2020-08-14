@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries.js" afterDir="false" />
-    </list>
+    <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +63,6 @@
       <workItem from="1593701666857" duration="1700000" />
       <workItem from="1594995425608" duration="148219000" />
       <workItem from="1596647077606" duration="21563000" />
-    </task>
-    <task id="LOCAL-00176" summary="Working on Contest Data pull">
-      <created>1596730662361</created>
-      <option name="number" value="00176" />
-      <option name="presentableId" value="LOCAL-00176" />
-      <option name="project" value="LOCAL" />
-      <updated>1596730662361</updated>
     </task>
     <task id="LOCAL-00177" summary="Working on Contest Data pull">
       <created>1596731291954</created>
@@ -409,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597418381159</updated>
     </task>
-    <option name="localTasksCounter" value="225" />
+    <task id="LOCAL-00225" summary="Added Admin Routes">
+      <created>1597418895380</created>
+      <option name="number" value="00225" />
+      <option name="presentableId" value="LOCAL-00225" />
+      <option name="project" value="LOCAL" />
+      <updated>1597418895380</updated>
+    </task>
+    <option name="localTasksCounter" value="226" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
