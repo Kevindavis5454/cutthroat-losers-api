@@ -432,6 +432,15 @@ const logWeight = (user_id, contest_id, weight, cb) => {
     })
 }
 
+const logMeasurement = (user_id, contest_id, measurement, cb) => {
+    pool.query('INSERT INTO measurements (user_id, contest_id, measurement) VALUES ($1, $2, $3) RETURNING id', [user_id, contest_id, measurement], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 
 
 module.exports = {
@@ -478,6 +487,7 @@ module.exports = {
     getPointsGainedBingo,
     logWorkout,
     logWeight,
+    logMeasurement,
 
 
 }

@@ -424,6 +424,17 @@ const logWeight = (request, response) => {
     })
 }
 
+const logMeasurement = (request, response) => {
+    const { user_id, contest_id, measurement} = request.body
+    db.logMeasurement(user_id, contest_id, measurement, function(results){
+        if (results) {
+            response.status(201).send(`Measurement added with Measurement ID: ${results.rows[0].id}`)
+        }else {
+            response.send('Measurement could not be added')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -460,4 +471,5 @@ module.exports = {
     getPointsGainedBingo,
     logWorkout,
     logWeight,
+    logMeasurement,
 }
