@@ -435,6 +435,17 @@ const logMeasurement = (request, response) => {
     })
 }
 
+const logPointsWorkout = (request, response) => {
+    const { user_id, contest_id, category, points, win_id} = request.body
+    db.logPointsWorkout(user_id, contest_id, category, points, win_id, function(results){
+        if (results) {
+            response.status(201).send(`Points added with Point ID: ${results.rows[0].id}`)
+        }else {
+            response.send('Points could not be added')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -472,4 +483,5 @@ module.exports = {
     logWorkout,
     logWeight,
     logMeasurement,
+    logPointsWorkout,
 }
