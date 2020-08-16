@@ -13,9 +13,7 @@ const createUser = (request, response, next) => {
     const { display_name, username, password} = request.body
     if (validUser(request.body)) {
         db.getUserByUsername(username, function(results) {
-            if (results) {
-                response.status(200).json(results.rows)
-            }
+            return results
         })
             .then(user => {
                 if (!user) {
