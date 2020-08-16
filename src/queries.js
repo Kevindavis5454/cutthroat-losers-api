@@ -61,10 +61,7 @@ const getUserById = (request, response) => {
 }
 
 const getUserByUsername = (username, cb) => {
-    pool.query('SELECT username FROM users WHERE username = $1', [username], (error, results) => {
-        if (error) {
-            throw error
-        }
+    pool.query('SELECT username FROM users WHERE username = $1', [username], (results) => {
         cb(results)
     })
 }
