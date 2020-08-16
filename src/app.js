@@ -44,6 +44,8 @@ app.get('/api/users/:id', db.getUserById)
 app.post('/api/signup', routes.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
+app.get('/api/getNewContest', routes.getNewContest)
+
 
 app.get('/api/contest_to_user', routes.getContestToUser)
 app.get('/api/contest_to_user/:id', db.getContestsToUserById)
@@ -77,6 +79,7 @@ app.get('/api/contestInfo/getPointsGainedWorkout', routes.getPointsGainedWorkout
 app.get('/api/contestInfo/getPointsGainedBingo', routes.getPointsGainedBingo)
 app.get('/api/contestInfo/getPointsSpentBlock', routes.getPointsSpentBlock)
 app.get('/api/contestInfo/getPointsSpentSabotage', routes.getPointsSpentSabotage)
+
 
 app.get('/api/points', routes.pointsValue)
 app.get('/api/points/bingo', routes.bingoPointsValue)

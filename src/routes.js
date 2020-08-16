@@ -501,6 +501,17 @@ const addUserToContest = (request, response) => {
     })
 }
 
+const getNewContest = (request, response) => {
+    const { contest_name } = request.query
+    db.getNewContest(contest_name, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no info for that user')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -544,4 +555,5 @@ module.exports = {
     logPoints,
     adminGetAllUsers,
     addUserToContest,
+    getNewContest,
 }

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,20 +68,6 @@
       <workItem from="1593701666857" duration="1700000" />
       <workItem from="1594995425608" duration="148219000" />
       <workItem from="1596647077606" duration="21563000" />
-    </task>
-    <task id="LOCAL-00192" summary="Refactoring Routes">
-      <created>1597177864254</created>
-      <option name="number" value="00192" />
-      <option name="presentableId" value="LOCAL-00192" />
-      <option name="project" value="LOCAL" />
-      <updated>1597177864254</updated>
-    </task>
-    <task id="LOCAL-00193" summary="Refactoring Routes">
-      <created>1597178936765</created>
-      <option name="number" value="00193" />
-      <option name="presentableId" value="LOCAL-00193" />
-      <option name="project" value="LOCAL" />
-      <updated>1597178936765</updated>
     </task>
     <task id="LOCAL-00194" summary="Refactoring Routes">
       <created>1597184430237</created>
@@ -409,7 +398,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597608446052</updated>
     </task>
-    <option name="localTasksCounter" value="241" />
+    <task id="LOCAL-00241" summary="Added Admin Routes">
+      <created>1597608626438</created>
+      <option name="number" value="00241" />
+      <option name="presentableId" value="LOCAL-00241" />
+      <option name="project" value="LOCAL" />
+      <updated>1597608626438</updated>
+    </task>
+    <task id="LOCAL-00242" summary="Added Admin Routes">
+      <created>1597608792730</created>
+      <option name="number" value="00242" />
+      <option name="presentableId" value="LOCAL-00242" />
+      <option name="project" value="LOCAL" />
+      <updated>1597608792730</updated>
+    </task>
+    <option name="localTasksCounter" value="243" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
