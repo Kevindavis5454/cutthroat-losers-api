@@ -127,7 +127,7 @@ const createContest = (request, response) => {
             if (error) {
                 throw error
             }
-            response.status(201).statusText(results.rows[0].contest_id)
+            response.status(201).send(results.rows[0].contest_id)
 
         })
 }
