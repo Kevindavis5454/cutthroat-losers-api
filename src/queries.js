@@ -127,7 +127,7 @@ const createContest = (request, response) => {
             if (error) {
                 throw error
             }
-            response.status(201).json(results.rows[0].contest_id)
+            response.status(201).send(`Contest added with CONTEST ID: ${results.rows[0].contest_id}`)
 
         })
 }
