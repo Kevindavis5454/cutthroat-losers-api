@@ -88,6 +88,7 @@ app.post('/api/contestInfo/logWorkout', routes.logWorkout)
 app.post('/api/contestInfo/logWeight', routes.logWeight)
 app.post('/api/contestInfo/logMeasurement', routes.logMeasurement)
 app.post('/api/contestInfo/logPointsWorkout', routes.logPointsWorkout)
+app.post('/api/contestInfo/logPoints', routes.logPoints)
 
 app.get('/api/contestInfo/adminWeight', routes.adminWeightProgress)
 app.get('/api/contestInfo/adminMeasurement', routes.adminMeasurementProgress)

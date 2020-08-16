@@ -468,6 +468,15 @@ const adminMeasurementProgress = (user_id, cb) => {
     })
 }
 
+const logPoints = (user_id, contest_id, category, points, win_id , cb) => {
+    pool.query('INSERT INTO points (user_id, contest_id, category, points, win_id) VALUES ($1, $2, $3, $4, $5) RETURNING id', [user_id, contest_id, category, points, win_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 
 
 module.exports = {
@@ -518,6 +527,7 @@ module.exports = {
     logPointsWorkout,
     adminWeightProgress,
     adminMeasurementProgress,
+    logPoints,
 
 
 }
