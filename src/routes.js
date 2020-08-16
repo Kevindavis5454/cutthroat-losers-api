@@ -512,6 +512,28 @@ const getNewContest = (request, response) => {
     })
 }
 
+const addUserToCurrentStats = (request, response) => {
+    const { user_id, current_weight, goal_weight, display_name, contest_id } = request.body
+    db.addUserToCurrentStats(user_id, current_weight, goal_weight, display_name, contest_id, function(results){
+        if (results) {
+            response.status(201).send(`User added with USER ID: ${results.rows[0].id}`)
+        }else {
+            response.send('User Could not be added')
+        }
+    })
+}
+
+const userIdByUsername = (request, response) => {
+    const { username } = request.query
+    db.userIdByUsername(username, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no info for that user')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -556,4 +578,6 @@ module.exports = {
     adminGetAllUsers,
     addUserToContest,
     getNewContest,
+    addUserToCurrentStats,
+    userIdByUsername,
 }

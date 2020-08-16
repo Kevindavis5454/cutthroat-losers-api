@@ -45,6 +45,8 @@ app.post('/api/signup', routes.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
 app.get('/api/getNewContest', routes.getNewContest)
+app.post('/api/addToCurrentStats', routes.addUserToCurrentStats)
+app.get('/api/userIdByUsername', routes.userIdByUsername)
 
 
 app.get('/api/contest_to_user', routes.getContestToUser)

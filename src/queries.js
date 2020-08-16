@@ -491,8 +491,6 @@ const addUserToContest = (contest_id, user_id, cb) => {
         }
         cb(results)
     })
-
-
 }
 
 const getNewContest = (contest_name, cb) => {
@@ -504,6 +502,23 @@ const getNewContest = (contest_name, cb) => {
     })
 }
 
+const addUserToCurrentStats= (user_id, current_weight, goal_weight, display_name, cb) => {
+    pool.query('INSERT INTO current_stats (user_id, current_weight, goal_weight, display_name ) VALUES ($1, $2, $3, $4) RETURNING id', [user_id, current_weight, goal_weight, display_name], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
+const userIdByUsername = (username, cb) => {
+    pool.query('SELECT user_id FROM users WHERE username = $1', [username], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
 
 
 module.exports = {
@@ -558,6 +573,8 @@ module.exports = {
     adminGetAllUsers,
     addUserToContest,
     getNewContest,
+    addUserToCurrentStats,
+    userIdByUsername,
 
 
 }
