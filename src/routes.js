@@ -489,6 +489,17 @@ const adminGetAllUsers = (request, response) => {
     })
 }
 
+const addUserToContest = (request, response) => {
+    const { contest_id, user_id } = request.body
+    db.addUserToContest(contest_id, user_id, function(results){
+        if (results) {
+            response.status(201).send(`User added with USER ID: ${results.rows[0].id}`)
+        }else {
+            response.send('Points could not be added')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -531,4 +542,5 @@ module.exports = {
     adminMeasurementProgress,
     logPoints,
     adminGetAllUsers,
+    addUserToContest,
 }
