@@ -479,6 +479,16 @@ const logPoints = (request, response) => {
     })
 }
 
+const adminGetAllUsers = (request, response) => {
+    db.adminGetAllUsers(function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        } else {
+            response.send('There are no users')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -520,4 +530,5 @@ module.exports = {
     adminWeightProgress,
     adminMeasurementProgress,
     logPoints,
+    adminGetAllUsers,
 }

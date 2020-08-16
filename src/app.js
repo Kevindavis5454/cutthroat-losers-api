@@ -92,6 +92,7 @@ app.post('/api/contestInfo/logPoints', routes.logPoints)
 
 app.get('/api/contestInfo/adminWeight', routes.adminWeightProgress)
 app.get('/api/contestInfo/adminMeasurement', routes.adminMeasurementProgress)
+app.get('/api/admin/getAllUsers', routes.adminGetAllUsers)
 
 
 

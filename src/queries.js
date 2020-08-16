@@ -477,6 +477,15 @@ const logPoints = (user_id, contest_id, category, points, win_id , cb) => {
     })
 }
 
+const adminGetAllUsers = (cb) => {
+    pool.query('SELECT user_id, username, display_name FROM users', (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 
 
 module.exports = {
@@ -528,6 +537,7 @@ module.exports = {
     adminWeightProgress,
     adminMeasurementProgress,
     logPoints,
+    adminGetAllUsers,
 
 
 }
