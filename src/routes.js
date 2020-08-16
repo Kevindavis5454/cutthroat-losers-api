@@ -34,26 +34,26 @@ const createUser = (request, response, next) => {
 const userAuth = (request, response, next) => {
     const { username, password } = request.body
     if (validUser(request.body)) {
-        db.getUserByUsername(username, function(results){})
-            .then(user => {
-                if (user){
-                    db.userAuth(username, password, function(results){
-                        if (results.rows[0].password == password) {
-                            response.cookie('user_id', results.rows[0].user_id, {
-                                httpOnly: false,
-                                expires: new Date(Date.now() + 12 * 3600000),
-                                signed: false,
-                                sameSite: 'none',
-                                secure: true
-                            });
-                            console.log(response.cookie)
-                            response.send(``)
-                        }
-                    })
-                }else {
-                    next(new Error('Username does not exist'))
-                }
-            })
+        db.getUserByUsername(username, function(results){
+            if (results){
+                db.userAuth(username, password, function(results){
+                    if (results.rows[0].password == password) {
+                        response.cookie('user_id', results.rows[0].user_id, {
+                            httpOnly: false,
+                            expires: new Date(Date.now() + 12 * 3600000),
+                            signed: false,
+                            sameSite: 'none',
+                            secure: true
+                        });
+                        console.log(response.cookie)
+                        response.send(``)
+                    }
+                })
+            }else {
+                next(new Error('Username does not exist'))
+            }
+        })
+
     }else {
         next(new Error('Invalid Login'))
     }
