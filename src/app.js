@@ -100,7 +100,7 @@ app.get('/api/contestInfo/adminMeasurement', routes.adminMeasurementProgress)
 app.get('/api/admin/getAllUsers', routes.adminGetAllUsers)
 app.post('/api/admin/addUserToContest', routes.addUserToContest)
 
-app.post('/api/currentStats/weight', routes.updateCurrentWeight)
+app.patch('/api/currentStats/weight', routes.updateCurrentWeight)
 
 
 
