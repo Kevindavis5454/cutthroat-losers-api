@@ -521,7 +521,7 @@ const userIdByUsername = (username, cb) => {
 }
 
 const updateCurrentWeight = (user_id, contest_id, current_weight, cb) => {
-    pool.query('UPDATE current_stats SET current_weight = $3 WHERE user_id = $1 AND contest_id = $2', [user_id, contest_id, current_weight], (error, results) => {
+    pool.query('UPDATE current_stats SET current_weight = $1 WHERE user_id = $2 AND contest_id = $3', [current_weight, user_id, contest_id], (error, results) => {
         if (error) {
             throw error
         }
