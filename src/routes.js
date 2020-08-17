@@ -534,8 +534,8 @@ const userIdByUsername = (request, response) => {
     })
 }
 const updateCurrentWeight = (request, response) => {
-    const { user_id, contest_id, current_weight} = request.body
-    db.updateCurrentWeight(user_id, contest_id, current_weight, function(results){
+    const { user_id, contest_id, weight} = request.body
+    db.updateCurrentWeight(user_id, contest_id, weight, function(results){
         if (results) {
             response.status(201).send(`Weigh-in added to current stats table`)
         }else {
