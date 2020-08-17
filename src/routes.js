@@ -513,10 +513,10 @@ const getNewContest = (request, response) => {
 }
 
 const addUserToCurrentStats = (request, response) => {
-    const { user_id, current_weight, goal_weight, display_name, contest_id } = request.body
-    db.addUserToCurrentStats(user_id, current_weight, goal_weight, display_name, contest_id, function(results){
+    const { user_id, current_weight, goal_weight, display_name } = request.body
+    db.addUserToCurrentStats(user_id, current_weight, goal_weight, display_name, function(results){
         if (results) {
-            response.status(201).send(`User added with USER ID: ${results.rows[0].id}`)
+            response.status(201).send(`User added to currentStats`)
         }else {
             response.send('User Could not be added')
         }
