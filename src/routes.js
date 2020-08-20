@@ -13,13 +13,13 @@ const createUser = (request, response, next) => {
     const { display_name, username, password} = request.body
     if (validUser(request.body)) {
         db.getUserByUsername(username, function(results) {
-            console.log(results, "getuser results")
             if (results) {
                 //email in use!
                 response.status(401).send("Email already in use")
             } else {
                 //this is a unique email
                 db.createUser(display_name, username, password, function(results){
+                    console.log(results, "results from createUser")
                     response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
                 })
             }
