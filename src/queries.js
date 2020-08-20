@@ -61,7 +61,7 @@ const getUserById = (request, response) => {
 }
 
 const getUserByUsername = (username, cb) => {
-    pool.query('SELECT username FROM users WHERE username = $1', [username], (results) => {
+    pool.query('SELECT * FROM users WHERE username = $1', [username], (results) => {
         cb(results)
     })
 }
