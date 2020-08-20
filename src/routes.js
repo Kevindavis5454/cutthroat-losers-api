@@ -12,19 +12,24 @@ function validUser(user) {
 const createUser = (request, response, next) => {
     const { display_name, username, password} = request.body
     function processResults(results) {
-        response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
+        
     }
     if (validUser(request.body)) {
-        try {
-            db.createUser(display_name, username, password, processResults(results))
-        }
-        catch (err){
-            console.log(err)
-            response.status(401).send("Email already in use")
-        }
+         db.createUser(display_name, username, password, function(results){
+             try{
+                 if (!results.rows[0].user_id){
+                     throw new Error
+                 } else {
+                    response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
+                 }
                 
-                
-            }
+             }
+             catch(err){
+                console.log(err)
+                response.status(401).send("Email already in use")
+             }
+         })      
+     }
 
     // }else {
     //     next(new Error('Invalid Username or Password format'))
