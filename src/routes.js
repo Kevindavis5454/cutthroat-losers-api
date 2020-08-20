@@ -19,6 +19,7 @@ const createUser = (request, response, next) => {
             } else {
                 //this is a unique email
                 db.createUser(display_name, username, password, function(results){
+                    console.log(response)
                     if (response === 23505) {
                         response.status(401).send("Email already in use")
                     }else {
