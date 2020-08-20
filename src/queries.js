@@ -69,9 +69,7 @@ const getUserByUsername = (username, cb) => {
 const createUser= (display_name, username, password, cb) => {
     pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, password], (error, results) => {
         if (error) {
-            if (error.code === 23505){
-                cb("Email already exists")
-            }
+            throw error
         }
         cb(results)
     })
