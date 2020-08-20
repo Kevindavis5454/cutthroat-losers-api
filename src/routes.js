@@ -19,8 +19,8 @@ const createUser = (request, response, next) => {
             } else {
                 //this is a unique email
                 db.createUser(display_name, username, password, function(results){
-                    console.log(response)
-                    if (response === 23505) {
+                    console.log(response, "response from createUser")
+                    if (response === "Email already exists") {
                         response.status(401).send("Email already in use")
                     }else {
                         response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
