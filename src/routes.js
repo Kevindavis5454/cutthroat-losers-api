@@ -13,6 +13,7 @@ const createUser = (request, response, next) => {
     const { display_name, username, password} = request.body
     if (validUser(request.body)) {
         db.getUserByUsername(username, function(results) {
+            console.log(results, "getuser results")
             if (!results) {
                 //this is a unique email
                 db.createUser(display_name, username, password, function(results){
