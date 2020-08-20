@@ -20,7 +20,7 @@ const createUser = (request, response, next) => {
                 })
             } else {
                 //email in use!
-                next(new Error('Email in use'))
+                res.status(401).send("Email already in use")
             }
         })
 
