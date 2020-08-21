@@ -11,11 +11,9 @@ function validUser(user) {
 
 const createUser = (request, response, next) => {
     const { display_name, username, password} = request.body
-    function processResults(results) {
-        
-    }
     if (validUser(request.body)) {
          db.createUser(display_name, username, password, function(results){
+             console.log(results, "results from db.createUser")
              try{
                  if (!results.rows[0].user_id){
                      throw new Error
