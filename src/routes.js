@@ -13,7 +13,6 @@ const createUser = (request, response, next) => {
     const { display_name, username, password} = request.body
     if (validUser(request.body)) {
          db.createUser(display_name, username, password, function(results){
-             console.log(results, "results from db.createUser")
              try{
                 //  if (results === "23505"){
                 //      response.status(401).send("Email already in use")
@@ -23,7 +22,6 @@ const createUser = (request, response, next) => {
                 
              }
              catch(err){
-                console.log(err)
                 response.status(401).send("Email already in use")
              }
          })      
