@@ -15,15 +15,16 @@ const createUser = (request, response, next) => {
          db.createUser(display_name, username, password, function(results){
              console.log(results, "results from db.createUser")
              try{
-                 if (results === "23505"){
-                     response.status(401).send("Email already in use")
-                 } else {
+                //  if (results === "23505"){
+                //      response.status(401).send("Email already in use")
+                //  } else {
                     response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
-                 }
+                //  }
                 
              }
              catch(err){
                 console.log(err)
+                response.status(401).send("Email already in use")
              }
          })      
      }
