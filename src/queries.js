@@ -1,6 +1,7 @@
 const Pool = require('pg').Pool
 require('dotenv').config();
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { brotliDecompress } = require('zlib');
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -70,7 +71,7 @@ const createUser= (display_name, username, password, cb) => {
     pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, password], (error, results) => {
         if (error) {
             console.log(`Error: Code ${error.code}`)
-            return;
+            cb(error.code)
         }
         cb(results)
     })
