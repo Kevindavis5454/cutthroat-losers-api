@@ -1,9 +1,11 @@
 const app = require('../src/app')
+const { expect } = require('chai')
+const supertest = require('supertest')
 
 describe('App', () => {
-    it('GET / responds with 200 containing "Hello, world!"', () => {
+    it('GET /api/users responds with 200', () => {
         return supertest(app)
-            .get('/')
-            .expect(200, 'Hello, world!')
+            .get('/api/users')
+            .expect(200)
     })
 })
