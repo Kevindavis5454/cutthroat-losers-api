@@ -2,8 +2,9 @@ const Pool = require('pg').Pool
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const { brotliDecompress } = require('zlib');
-
-const connection = (process.env.NODE_ENV === 'test' ? process.env.HEROKU_POSTGRESQL_MAROON_URL : process.env.DATABASE_URL)
+// const {DATABASE_URL, TEST_DATABASE_URL} = require('./config');
+// process.env.NODE_ENV === 'test' ? TEST_DATABASE_URL : DATABASE_URL
+const connection = process.env.DATABASE_URL
 
 
 const pool = new Pool({
@@ -13,7 +14,7 @@ const pool = new Pool({
 
 const userAuth = (username, password, cb) => {
     pool.query('SELECT password, user_id FROM users WHERE username = $1', [username], (error, results) => {
-        console.log(results.rows[0].password)
+        //console.log(results.rows[0].password)
         if (error) {
             throw error
         }

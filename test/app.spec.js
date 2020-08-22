@@ -10,7 +10,7 @@ const should = chai.should();
 chai.use(chaiHttp)
 
 describe('POST /login', () => {
-    it('Should attempt to login', () => {
+    it.only('Should attempt to login', () => {
         let testUser = {
             username: "test@gmail.com",
             password: "test123"
@@ -19,6 +19,7 @@ describe('POST /login', () => {
         .post('/api/login')
         .send(testUser)
         .end((err,res) => {
+            console.log({body:res.body})
             res.should.have.status(200);
             res.body.should.be.a('object');
         })
