@@ -9,22 +9,21 @@ function validUser(user) {
     return validEmail && validPassword;
 }
 
-const createUser = (request, response, next) => {
+const createUser = (request, response) => {
     const { display_name, username, password} = request.body
     if (validUser(request.body)) {
-         db.createUser(display_name, username, password, function(results){
-             try{
-                //  if (results === "23505"){
-                //      response.status(401).send("Email already in use")
-                //  } else {
-                    response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
-                //  }
-                
-             }
-             catch(err){
-                response.status(401).send("Email already in use")
-             }
-         })      
+        db.checkUserByUsername(username, function(results) {
+            if (results) {
+                response.status(401).send("That email is in use")
+            }else {
+                db.createUser(display_name, username, password, function(results){
+                    if (results) {
+                        response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
+                    }
+                })
+            }
+        })
+
      }
 
     // }else {
