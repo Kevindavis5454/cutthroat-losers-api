@@ -106,6 +106,8 @@ app.post('/api/admin/addUserToContest', routes.addUserToContest)
 
 app.put('/api/currentStats/weight', routes.updateCurrentWeight)
 
+app.put('/api/contestInfo/addContestId', routes.addContestIdToCurrentStats)
+
 
 
 

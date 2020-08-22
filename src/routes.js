@@ -546,6 +546,17 @@ const updateCurrentWeight = (request, response) => {
     })
 }
 
+const addContestIdToCurrentStats = (request, response) => {
+    const { contest_id, user_id } = request.body
+    db.addContestIdToCurrentStats(contest_id, user_id, function(results){
+        if (results) {
+            response.status(201).send(`Weigh-in added to current stats table`)
+        }else {
+            response.send('Weigh-in could not be added')
+        }
+    })
+}
+
 module.exports = {
     userAuth,
     getContestId,
@@ -593,4 +604,5 @@ module.exports = {
     addUserToCurrentStats,
     userIdByUsername,
     updateCurrentWeight,
+    addContestIdToCurrentStats,
 }

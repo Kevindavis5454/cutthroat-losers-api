@@ -534,6 +534,15 @@ const updateCurrentWeight = (user_id, contest_id, weight, cb) => {
     })
 }
 
+const addContestIdToCurrentStats = (contest_id, user_id, cb) => {
+    pool.query('UPDATE current_stats SET contest_id = $1 WHERE user_id = $2', [contest_id, user_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        cb(results)
+    })
+}
+
 module.exports = {
     getUsers,
     getUserById,
@@ -589,6 +598,7 @@ module.exports = {
     addUserToCurrentStats,
     userIdByUsername,
     updateCurrentWeight,
+    addContestIdToCurrentStats,
 
 
 }
