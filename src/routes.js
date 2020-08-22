@@ -25,9 +25,9 @@ const checkUserByUsername = (request, response) => {
     db.checkUserByUsername(username, function(results) {
         console.log(results)
         if (results) {
-            response.status(401).send('That email is in use')
+            response.status(401).json(results.rows)
         }else {
-            response.status(200).send('That Email is NOT in use')
+            response.status(200).json(results.rows)
         }
     })
 }
