@@ -23,7 +23,8 @@ const createUser = (request, response) => {
 const checkUserByUsername = (request, response) => {
     const { username } = request.query
     db.checkUserByUsername(username, function(results) {
-        if (results.rows.length !== 0) {
+        console.log(results)
+        if (results) {
             response.status(401).send('That email is in use')
         }else {
             response.status(200).send('That Email is NOT in use')
