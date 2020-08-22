@@ -3,8 +3,11 @@ require('dotenv').config();
 const bcrypt = require('bcrypt');
 const { brotliDecompress } = require('zlib');
 
+const connection = (process.env.NODE_ENV === 'test' ? process.env.HEROKU_POSTGRESQL_MAROON_URL : process.env.DATABASE_URL)
+
+
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: connection,
 
 });
 

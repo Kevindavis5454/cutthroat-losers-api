@@ -39,11 +39,14 @@ app.use(cors(corsOptions))
 
 
 app.post('/api/login', routes.userAuth)
+
+app.post('/api/signup', routes.createUser)
+
 app.get('/api/users', routes.getUsers)
 app.get('/api/users/:id', db.getUserById)
-app.post('/api/signup', routes.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
+
 app.get('/api/getNewContest', routes.getNewContest)
 app.post('/api/addToCurrentStats', routes.addUserToCurrentStats)
 app.get('/api/userIdByUsername', routes.userIdByUsername)
@@ -56,9 +59,10 @@ app.post('/api/contests/auth', db.contestAuth)
 app.get('/api/contests', db.getContests)
 app.get('/api/contests/:id', db.getContestById)
 app.post('/api/contests', db.createContest)
+app.post('/api/contests/getContestId', routes.getContestId)
 
 // Collect Selected Contest Info
-app.post('/api/contests/getContestId', routes.getContestId)
+
 app.get('/api/contestInfo/measurements', routes.contestMeasurements)
 app.get('/api/contestInfo/userWeights', routes.contestWeighins)
 app.get('/api/contestInfo/points', routes.contestPoints)
