@@ -41,6 +41,7 @@ app.use(cors(corsOptions))
 app.post('/api/login', routes.userAuth)
 
 app.post('/api/signup', routes.createUser)
+app.get('/api/checkUserByUsername', routes.checkUserByUsername)
 
 app.get('/api/users', routes.getUsers)
 app.get('/api/users/:id', db.getUserById)

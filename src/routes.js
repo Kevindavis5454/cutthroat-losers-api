@@ -12,25 +12,23 @@ function validUser(user) {
 const createUser = (request, response) => {
     const { display_name, username, password} = request.body
     if (validUser(request.body)) {
-        db.checkUserByUsername(username, function(results) {
-            console.log(results, 'Results')
-            if (results) {
-               return response.status(401).send("That email is in use")
-            }else {
                 db.createUser(display_name, username, password, function(results){
                     if (results) {
-                        response.status(201).send(`User added with USER ID: ${results.rows[0].user_id}`)
+                        response.status(200).send(`User added with USER ID: ${results.rows[0].user_id}`)
                     }
                 })
             }
-        })
-
      }
 
-    // }else {
-    //     next(new Error('Invalid Username or Password format'))
-    // }
-
+const checkUserByUsername = (request, response) => {
+    const { username } = request.query
+    db.checkUserByUsername(username, function(results) {
+        if (results.rows.length !== 0) {
+            response.status(401).send('That email is in use')
+        }else {
+            response.status(200).send('That Email is NOT in use')
+        }
+    })
 }
 
 const userAuth = (request, response, next) => {
@@ -605,4 +603,5 @@ module.exports = {
     userIdByUsername,
     updateCurrentWeight,
     addContestIdToCurrentStats,
+    checkUserByUsername,
 }
