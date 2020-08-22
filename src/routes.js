@@ -24,7 +24,7 @@ const checkUserByUsername = (request, response) => {
     const { username } = request.query
     db.checkUserByUsername(username, function(results) {
         console.log(results)
-        if (results) {
+        if (results.rows.length !== 0) {
             response.status(401).json(results.rows)
         }else {
             response.status(200).json(results.rows)
