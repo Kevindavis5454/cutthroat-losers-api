@@ -42,7 +42,7 @@ app.post('/api/login', routes.userAuth)
 
 app.post('/api/signup', routes.createUser)
 app.get('/api/checkUserByUsername', routes.checkUserByUsername)
-
+/////Above
 app.get('/api/users', routes.getUsers)
 app.get('/api/users/:id', db.getUserById)
 app.put('/api/users/:id', db.updateUser)
@@ -106,7 +106,7 @@ app.get('/api/admin/getAllUsers', routes.adminGetAllUsers)
 app.post('/api/admin/addUserToContest', routes.addUserToContest)
 
 app.put('/api/currentStats/weight', routes.updateCurrentWeight)
-
+/////Below
 app.put('/api/contestInfo/addContestId', routes.addContestIdToCurrentStats)
 
 
