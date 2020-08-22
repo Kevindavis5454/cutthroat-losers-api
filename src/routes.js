@@ -14,7 +14,7 @@ const createUser = (request, response) => {
     if (validUser(request.body)) {
         db.checkUserByUsername(username, function(results) {
             if (results) {
-                response.status(401).send("That email is in use")
+               return response.status(401).send("That email is in use")
             }else {
                 db.createUser(display_name, username, password, function(results){
                     if (results) {
