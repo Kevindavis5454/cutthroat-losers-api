@@ -13,7 +13,7 @@ const createUser = (request, response) => {
     const { display_name, username, password} = request.body
     if (validUser(request.body)) {
         db.checkUserByUsername(username, function(results) {
-            if (results) {
+            if (results == undefined) {
                return response.status(401).send("That email is in use")
             }else {
                 db.createUser(display_name, username, password, function(results){
