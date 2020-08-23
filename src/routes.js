@@ -19,6 +19,7 @@ const createUser = (request, response) => {
                 })
             }
      }
+//
 
 const checkUserByUsername = (request, response) => {
     const { username } = request.query
@@ -31,6 +32,7 @@ const checkUserByUsername = (request, response) => {
         }
     })
 }
+//
 
 const userAuth = (request, response, next) => {
     const { username, password } = request.body
@@ -59,6 +61,7 @@ const userAuth = (request, response, next) => {
         next(new Error('Invalid Login'))
     }
 }
+//
 
 const getUsers = (request, response) => {
     db.getUsers(function(results) {
@@ -69,6 +72,7 @@ const getUsers = (request, response) => {
         }
     })
 }
+//
 
 const getContestToUser = (request, response) => {
     db.getContestToUser(function(results) {
@@ -79,6 +83,7 @@ const getContestToUser = (request, response) => {
         }
     })
 }
+//
 
 
 
@@ -90,6 +95,7 @@ const getContestId = (request, response) => {
             response.status(200).json(results.rows)
     })
 }
+//
 
 
 
@@ -103,6 +109,7 @@ const contestMeasurements = (request, response) => {
         }
     })
 }
+//
 
 const contestWeighins = (request, response) => {
     const { contest_id, user_id } = request.query
@@ -114,6 +121,7 @@ const contestWeighins = (request, response) => {
         }
     })
 }
+//
 
 const contestPoints = (request, response) => {
     const { contest_id } = request.query
@@ -125,6 +133,7 @@ const contestPoints = (request, response) => {
         }
     })
 }
+//
 
 const contestSabotages = (request, response) => {
     const { contest_id } = request.query
@@ -136,6 +145,7 @@ const contestSabotages = (request, response) => {
         }
     })
 }
+///----------NO LONGER USED ABOVE
 
 const contestUsers = (request, response) => {
     const { contest_id } = request.query
@@ -147,6 +157,7 @@ const contestUsers = (request, response) => {
         }
     })
 }
+//
 
 const contestUsersInfo = (request, response) => {
     const { user_id } = request.query
@@ -158,6 +169,7 @@ const contestUsersInfo = (request, response) => {
         }
     })
 }
+//
 
 const contestUserCurrentWeight = (request, response) => {
     const { user_id, contest_id} = request.query
@@ -182,6 +194,7 @@ const contestUserStats = (request, response) => {
         }
     })
 }
+//
 
 const sidebarStats = (request, response) => {
     const { contest_id } = request.query
@@ -193,6 +206,7 @@ const sidebarStats = (request, response) => {
         }
     })
 }
+//
 
 const pointsValue = (request, response) => {
     const { user_id } = request.query
@@ -204,6 +218,7 @@ const pointsValue = (request, response) => {
         }
     })
 }
+//
 
 const bingoPointsValue = (request, response) => {
     const { user_id } = request.query
@@ -216,6 +231,8 @@ const bingoPointsValue = (request, response) => {
     })
 }
 
+///------- ABOVE NO LONGER USED
+
 const weightPointsValue = (request, response) => {
     const { user_id } = request.query
     db.weightPointsValue(user_id, function(results) {
@@ -226,6 +243,7 @@ const weightPointsValue = (request, response) => {
         }
     })
 }
+//
 
 const stomachPointsValue = (request, response) => {
     const { user_id } = request.query
@@ -237,6 +255,7 @@ const stomachPointsValue = (request, response) => {
         }
     })
 }
+//
 
 const workoutPointsValue = (request, response) => {
     const { user_id } = request.query
@@ -248,6 +267,7 @@ const workoutPointsValue = (request, response) => {
         }
     })
 }
+//
 
 const weightPageStats = (request, response) => {
     const { contest_id, user_id } = request.query
@@ -259,6 +279,7 @@ const weightPageStats = (request, response) => {
         }
     })
 }
+//
 
 const contestUserIds = (request, response) => {
     const { contest_id } = request.query
@@ -271,6 +292,8 @@ const contestUserIds = (request, response) => {
         }
     })
 }
+//
+
 
 const groupWeightPageStats = (request, response) => {
     const { contest_id, user_id } = request.query
@@ -282,6 +305,7 @@ const groupWeightPageStats = (request, response) => {
         }
     })
 }
+//
 
 const contestUserWorkouts = (request, response) => {
     const { contest_id, user_id, category } = request.query
@@ -293,6 +317,7 @@ const contestUserWorkouts = (request, response) => {
         }
     })
 }
+//
 
 const weightProgress = (request, response) => {
     const { user_id } = request.query
@@ -304,6 +329,7 @@ const weightProgress = (request, response) => {
         }
     })
 }
+//
 
 const groupContestUserWorkouts = (request, response) => {
     const { contest_id, user_id } = request.query
@@ -315,6 +341,7 @@ const groupContestUserWorkouts = (request, response) => {
         }
     })
 }
+//
 
 const getMeasurementInfo = (request, response) => {
     const { contest_id, user_id } = request.query
@@ -326,6 +353,7 @@ const getMeasurementInfo = (request, response) => {
         }
     })
 }
+//
 
 const getUserPoints = (request, response) => {
     const { user_id, contest_id } = request.query
@@ -337,6 +365,7 @@ const getUserPoints = (request, response) => {
         }
     })
 }
+//
 
 const getPointsGainedStomach = (request, response) => {
     const { user_id, contest_id } = request.query
@@ -348,6 +377,7 @@ const getPointsGainedStomach = (request, response) => {
         }
     })
 }
+//
 
 const getPointsGainedWeight = (request, response) => {
     const { user_id, contest_id } = request.query
@@ -359,6 +389,7 @@ const getPointsGainedWeight = (request, response) => {
         }
     })
 }
+//
 
 const getPointsGainedWorkout = (request, response) => {
     const { user_id, contest_id } = request.query
@@ -370,6 +401,7 @@ const getPointsGainedWorkout = (request, response) => {
         }
     })
 }
+//
 
 const getPointsGainedBingo = (request, response) => {
     const { user_id, contest_id } = request.query
@@ -382,6 +414,8 @@ const getPointsGainedBingo = (request, response) => {
     })
 }
 
+///-------ABOVE NO LONGER USED
+
 const getPointsSpentBlock = (request, response) => {
     const { user_id, contest_id } = request.query
     db.getPointsSpentBlock(user_id, contest_id, function(results) {
@@ -392,6 +426,7 @@ const getPointsSpentBlock = (request, response) => {
         }
     })
 }
+///----ABOVE NO LONGER USED
 
 const getPointsSpentSabotage = (request, response) => {
     const { user_id, contest_id } = request.query
@@ -403,6 +438,7 @@ const getPointsSpentSabotage = (request, response) => {
         }
     })
 }
+///----ABOVE NO LONGER USED
 
 const logWorkout = (request, response) => {
     const { user_id, contest_id, category} = request.body
@@ -414,6 +450,7 @@ const logWorkout = (request, response) => {
         }
     })
 }
+//
 
 const logWeight = (request, response) => {
     const { user_id, contest_id, weight} = request.body
@@ -425,6 +462,7 @@ const logWeight = (request, response) => {
         }
     })
 }
+//
 
 const logMeasurement = (request, response) => {
     const { user_id, contest_id, measurement} = request.body
@@ -436,6 +474,7 @@ const logMeasurement = (request, response) => {
         }
     })
 }
+//
 
 const logPointsWorkout = (request, response) => {
     const { user_id, contest_id, category, points, win_id} = request.body
@@ -447,6 +486,7 @@ const logPointsWorkout = (request, response) => {
         }
     })
 }
+//
 
 const adminWeightProgress = (request, response) => {
     const { user_id } = request.query
@@ -458,6 +498,7 @@ const adminWeightProgress = (request, response) => {
         }
     })
 }
+//
 
 const adminMeasurementProgress = (request, response) => {
     const { user_id } = request.query
@@ -469,6 +510,7 @@ const adminMeasurementProgress = (request, response) => {
         }
     })
 }
+//
 
 const logPoints = (request, response) => {
     const { user_id, contest_id, category, points, win_id} = request.body
@@ -480,6 +522,7 @@ const logPoints = (request, response) => {
         }
     })
 }
+//
 
 const adminGetAllUsers = (request, response) => {
     db.adminGetAllUsers(function(results) {
@@ -490,6 +533,7 @@ const adminGetAllUsers = (request, response) => {
         }
     })
 }
+//
 
 const addUserToContest = (request, response) => {
     const { contest_id, user_id } = request.body
@@ -501,6 +545,7 @@ const addUserToContest = (request, response) => {
         }
     })
 }
+//
 
 const getNewContest = (request, response) => {
     const { contest_name } = request.query
@@ -512,6 +557,7 @@ const getNewContest = (request, response) => {
         }
     })
 }
+//
 
 const addUserToCurrentStats = (request, response) => {
     const { user_id, current_weight, goal_weight, display_name } = request.body
@@ -523,6 +569,7 @@ const addUserToCurrentStats = (request, response) => {
         }
     })
 }
+//
 
 const userIdByUsername = (request, response) => {
     const { username } = request.query
@@ -534,6 +581,8 @@ const userIdByUsername = (request, response) => {
         }
     })
 }
+//
+
 const updateCurrentWeight = (request, response) => {
     const { user_id, contest_id, weight} = request.body
     db.updateCurrentWeight(user_id, contest_id, weight, function(results){
@@ -544,6 +593,7 @@ const updateCurrentWeight = (request, response) => {
         }
     })
 }
+//
 
 const addContestIdToCurrentStats = (request, response) => {
     const { contest_id, user_id } = request.body
@@ -555,6 +605,7 @@ const addContestIdToCurrentStats = (request, response) => {
         }
     })
 }
+//
 
 module.exports = {
     userAuth,

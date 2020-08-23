@@ -3,7 +3,7 @@ require('dotenv').config();
 const bcrypt = require('bcrypt');
 const { brotliDecompress } = require('zlib');
 // const {DATABASE_URL, TEST_DATABASE_URL} = require('./config');
-// process.env.NODE_ENV === 'test' ? TEST_DATABASE_URL : DATABASE_URL
+// process.env.NODE_ENV === 'test' ? TEST_DATABASE_URL : DATABASE_U
 const connection = process.env.DATABASE_URL
 
 
@@ -21,6 +21,8 @@ const userAuth = (username, password, cb) => {
         cb(results)
     })
 }
+//
+
 const contestAuth = (request, response) => {
     const { contest_id } = request.body
     pool.query('SELECT * FROM contests WHERE contest_id = $1', [contest_id], (error, results) => {
@@ -41,6 +43,7 @@ const contestAuth = (request, response) => {
         }
     })
 }
+//
 
 
 /*USERS TABLE*/
@@ -53,6 +56,7 @@ const getUsers = (cb) => {
         cb(results)
     })
 }
+//
 
 const getUserById = (request, response) => {
     const user_id = ParseInt(request.params.id)
@@ -64,12 +68,15 @@ const getUserById = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
+//
 
 const getUserByUsername = (username, cb) => {
     pool.query('SELECT * FROM users WHERE username = $1', [username], (results) => {
         cb(results)
     })
 }
+
+/////ABOVE HAS NO MATCHING ROUTE
 
 const checkUserByUsername = (username, cb) => {
     pool.query('SELECT * FROM users WHERE username = $1', [username], (error, results) => {
@@ -80,6 +87,7 @@ const checkUserByUsername = (username, cb) => {
         cb(results)
     })
 }
+//
 
 const createUser= (display_name, username, password, cb) => {
     pool.query('INSERT INTO users (display_name, username, password) VALUES ($1, $2, $3) RETURNING user_id', [display_name, username, password], (error, results) => {
@@ -90,6 +98,7 @@ const createUser= (display_name, username, password, cb) => {
         cb(results)
     })
 }
+//
 
 const updateUser = (request, response) => {
     const user_id = parseInt(request.params.id)
@@ -104,6 +113,7 @@ const updateUser = (request, response) => {
         }
     )
 }
+//
 
 const deleteUser = (request, response) => {
     const user_id = parseInt(request.params.id)
@@ -115,6 +125,7 @@ const deleteUser = (request, response) => {
         response.status(200).send(`User deleted with USER ID: ${user_id}`)
     })
 }
+//
 
 /*CONTESTS TABLE*/
 
@@ -126,6 +137,8 @@ const getContests = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
+//
+
 const getContestById = (request, response) => {
     const contest_id = parseInt(request.params.id)
 
@@ -137,6 +150,7 @@ const getContestById = (request, response) => {
     })
 }
 
+//
 const createContest = (request, response) => {
     const { date_start, date_end, contest_name, weighin_day, date_created} = request.body
         pool.query('INSERT INTO contests (date_start, date_end, contest_name, weighin_day, date_created) VALUES ($1, $2, $3, $4, $5) RETURNING contest_id', [date_start, date_end, contest_name, weighin_day, date_created], (error, results) => {
@@ -147,6 +161,7 @@ const createContest = (request, response) => {
 
         })
 }
+//
 
 /*CONTEST TO USER*/
 
@@ -158,6 +173,8 @@ const getContestToUser = (cb) => {
         cb(results)
     })
 }
+//
+
 const getContestsToUserById = (request, response) => {
     const user_id = parseInt(request.params.id)
 
@@ -168,6 +185,7 @@ const getContestsToUserById = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
+//
 
 
 const getContestId = (contest_name, cb ) => {
@@ -178,6 +196,7 @@ const getContestId = (contest_name, cb ) => {
         cb(results)
     })
 }
+//
 
 // CONTEST INFO QUERIES
 
@@ -189,6 +208,7 @@ const contestMeasurements = (contest_id, cb) => {
         cb(results)
     })
 }
+//
 
 const contestWeighins = (contest_id, user_id, cb) => {
     pool.query('SELECT CAST(date_created AS DATE), CAST (weight AS DOUBLE PRECISION) FROM weighin WHERE contest_id = $1 AND user_id = $2 ORDER BY date_created ASC', [contest_id, user_id], (error, results) => {
@@ -198,6 +218,7 @@ const contestWeighins = (contest_id, user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const contestPoints = (contest_id, cb) => {
     pool.query('SELECT * FROM points WHERE contest_id = $1', [contest_id], (error, results) => {
@@ -207,6 +228,7 @@ const contestPoints = (contest_id, cb) => {
         cb(results)
     })
 }
+//
 
 const contestSabotages = (contest_id, cb) => {
     pool.query('SELECT * FROM sabotage WHERE contest_id = $1', [contest_id], (error, results) => {
@@ -216,6 +238,7 @@ const contestSabotages = (contest_id, cb) => {
         cb(results)
     })
 }
+//----------NO LONGER USED ABOVE
 
 const contestUsers = (contest_id, cb) => {
     pool.query('SELECT * FROM contest_to_user WHERE contest_id = $1 ORDER BY user_id ASC', [contest_id], (error, results) => {
@@ -225,6 +248,9 @@ const contestUsers = (contest_id, cb) => {
         cb(results)
     })
 }
+//
+
+
 
 const contestUsersInfo = (user_id, cb) => {
     pool.query('SELECT * FROM users  WHERE user_id = $1', [user_id], (error, results) => {
@@ -234,6 +260,7 @@ const contestUsersInfo = (user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const contestUserStats = (user_id, cb) => {
     pool.query('SELECT * FROM current_stats  WHERE user_id = $1', [user_id], (error, results) => {
@@ -243,6 +270,7 @@ const contestUserStats = (user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const sidebarStats = (contest_id, cb) => {
     pool.query('SELECT * FROM current_stats  WHERE contest_id = $1', [contest_id], (error, results) => {
@@ -252,6 +280,7 @@ const sidebarStats = (contest_id, cb) => {
         cb(results)
     })
 }
+//
 
 // Points table
 
@@ -263,6 +292,7 @@ const pointsValue = (user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const bingoPointsValue = (user_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category = 'bingo' AND user_id = $1", [user_id], (error, results) => {
@@ -273,6 +303,8 @@ const bingoPointsValue = (user_id, cb) => {
     })
 }
 
+///---------ABOVE NO LONGER USED
+
 const weightPointsValue = (user_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category = 'weight' AND user_id = $1", [user_id], (error, results) => {
         if (error) {
@@ -281,6 +313,7 @@ const weightPointsValue = (user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const stomachPointsValue = (user_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category = 'stomach' AND user_id = $1", [user_id], (error, results) => {
@@ -290,6 +323,7 @@ const stomachPointsValue = (user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const workoutPointsValue = (user_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category = 'workout' AND user_id = $1", [user_id], (error, results) => {
@@ -300,7 +334,7 @@ const workoutPointsValue = (user_id, cb) => {
     })
 }
 
-// ----
+//
 
 const weightPageStats = (contest_id, user_id, cb) => {
     pool.query('SELECT current_weight, goal_weight, display_name FROM current_stats  WHERE contest_id = $1 AND user_id = $2', [contest_id, user_id], (error, results) => {
@@ -311,6 +345,8 @@ const weightPageStats = (contest_id, user_id, cb) => {
     })
 }
 
+//
+
 const contestUsersIds = (contest_id, cb) => {
     pool.query('SELECT user_id FROM contest_to_user WHERE contest_id = $1 ORDER BY user_id ASC', [contest_id], (error, results) => {
         if (error) {
@@ -319,6 +355,8 @@ const contestUsersIds = (contest_id, cb) => {
         cb(results)
     })
 }
+//
+
 
 const groupWeightPageStats = (contest_id, user_id, cb) => {
     pool.query('SELECT display_name FROM current_stats  WHERE contest_id = $1 AND user_id = $2', [contest_id, user_id], (error, results) => {
@@ -328,6 +366,7 @@ const groupWeightPageStats = (contest_id, user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const contestUserWorkouts = (contest_id, user_id, category, cb) => {
     pool.query('SELECT date_created, category FROM workout_tracking  WHERE contest_id = $1 AND user_id = $2 AND category = $3 ORDER BY date_created ASC', [contest_id, user_id, category], (error, results) => {
@@ -337,6 +376,7 @@ const contestUserWorkouts = (contest_id, user_id, category, cb) => {
         cb(results)
     })
 }
+//
 
 const weightProgress = (user_id, cb) => {
     pool.query('SELECT weight FROM weighin WHERE user_id = $1 ORDER BY date_created ASC LIMIT 1', [user_id], (error, results) => {
@@ -346,6 +386,7 @@ const weightProgress = (user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const groupContestUserWorkouts = (contest_id, user_id, cb) => {
     pool.query('SELECT date_created FROM workout_tracking  WHERE contest_id = $1 AND user_id = $2 ORDER BY date_created ASC', [contest_id, user_id], (error, results) => {
@@ -355,6 +396,7 @@ const groupContestUserWorkouts = (contest_id, user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const getMeasurementInfo = (contest_id, user_id, cb) => {
     pool.query('SELECT CAST(date_created AS DATE), CAST (measurement AS DOUBLE PRECISION) FROM measurements  WHERE contest_id = $1 AND user_id = $2 ORDER BY date_created ASC', [contest_id, user_id], (error, results) => {
@@ -364,6 +406,7 @@ const getMeasurementInfo = (contest_id, user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const getUserPoints = (user_id, contest_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
@@ -373,6 +416,7 @@ const getUserPoints = (user_id, contest_id, cb) => {
         cb(results)
     })
 }
+//
 
 const getPointsGainedStomach = (user_id, contest_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category='stomach' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
@@ -382,6 +426,7 @@ const getPointsGainedStomach = (user_id, contest_id, cb) => {
         cb(results)
     })
 }
+//
 
 const getPointsGainedWeight = (user_id, contest_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category='weight' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
@@ -391,6 +436,7 @@ const getPointsGainedWeight = (user_id, contest_id, cb) => {
         cb(results)
     })
 }
+//
 
 const getPointsGainedWorkout = (user_id, contest_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category='workout' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
@@ -400,6 +446,7 @@ const getPointsGainedWorkout = (user_id, contest_id, cb) => {
         cb(results)
     })
 }
+//
 
 const getPointsGainedBingo = (user_id, contest_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category='bingo' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
@@ -409,6 +456,7 @@ const getPointsGainedBingo = (user_id, contest_id, cb) => {
         cb(results)
     })
 }
+///------ABOVE NO LONGER USED
 
 const getPointsSpentBlock = (user_id, contest_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category='block' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
@@ -418,6 +466,7 @@ const getPointsSpentBlock = (user_id, contest_id, cb) => {
         cb(results)
     })
 }
+///----ABOVE NO LONGER USED
 
 const getPointsSpentSabotage = (user_id, contest_id, cb) => {
     pool.query("SELECT SUM(points) FROM points WHERE category='sabotage' AND user_id = $1 AND contest_id = $2", [user_id, contest_id], (error, results) => {
@@ -427,6 +476,7 @@ const getPointsSpentSabotage = (user_id, contest_id, cb) => {
         cb(results)
     })
 }
+///----ABOVE NO LONGER USED
 
 const logWorkout = (user_id, contest_id, category, cb) => {
     pool.query('INSERT INTO workout_tracking (user_id, contest_id, category) VALUES ($1, $2, $3) RETURNING id', [user_id, contest_id, category], (error, results) => {
@@ -436,6 +486,7 @@ const logWorkout = (user_id, contest_id, category, cb) => {
         cb(results)
     })
 }
+//
 
 const logWeight = (user_id, contest_id, weight, cb) => {
     pool.query('INSERT INTO weighin (user_id, contest_id, weight) VALUES ($1, $2, $3) RETURNING id', [user_id, contest_id, weight], (error, results) => {
@@ -445,6 +496,7 @@ const logWeight = (user_id, contest_id, weight, cb) => {
         cb(results)
     })
 }
+//
 
 const logMeasurement = (user_id, contest_id, measurement, cb) => {
     pool.query('INSERT INTO measurements (user_id, contest_id, measurement) VALUES ($1, $2, $3) RETURNING id', [user_id, contest_id, measurement], (error, results) => {
@@ -454,6 +506,7 @@ const logMeasurement = (user_id, contest_id, measurement, cb) => {
         cb(results)
     })
 }
+//
 
 const logPointsWorkout = (user_id, contest_id, category, points, win_id , cb) => {
     pool.query('INSERT INTO points (user_id, contest_id, category, points, win_id) VALUES ($1, $2, $3, $4, $5) RETURNING id', [user_id, contest_id, category, points, win_id], (error, results) => {
@@ -463,6 +516,7 @@ const logPointsWorkout = (user_id, contest_id, category, points, win_id , cb) =>
         cb(results)
     })
 }
+//
 
 const adminWeightProgress = (user_id, cb) => {
     pool.query('SELECT CAST(weight AS DOUBLE PRECISION), date_created FROM weighin WHERE user_id = $1 ORDER BY date_created DESC LIMIT 2', [user_id], (error, results) => {
@@ -472,6 +526,7 @@ const adminWeightProgress = (user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const adminMeasurementProgress = (user_id, cb) => {
     pool.query('SELECT CAST(measurement AS DOUBLE PRECISION), date_created FROM measurements WHERE user_id = $1 ORDER BY date_created DESC LIMIT 2', [user_id], (error, results) => {
@@ -481,6 +536,7 @@ const adminMeasurementProgress = (user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const logPoints = (user_id, contest_id, category, points, win_id , cb) => {
     pool.query('INSERT INTO points (user_id, contest_id, category, points, win_id) VALUES ($1, $2, $3, $4, $5) RETURNING id', [user_id, contest_id, category, points, win_id], (error, results) => {
@@ -490,6 +546,7 @@ const logPoints = (user_id, contest_id, category, points, win_id , cb) => {
         cb(results)
     })
 }
+//
 
 const adminGetAllUsers = (cb) => {
     pool.query('SELECT user_id, username, display_name FROM users', (error, results) => {
@@ -499,6 +556,7 @@ const adminGetAllUsers = (cb) => {
         cb(results)
     })
 }
+//
 
 const addUserToContest = (contest_id, user_id, cb) => {
     pool.query('INSERT INTO contest_to_user (contest_id, user_id) VALUES ($1, $2) RETURNING id', [contest_id, user_id], (error, results) => {
@@ -508,6 +566,7 @@ const addUserToContest = (contest_id, user_id, cb) => {
         cb(results)
     })
 }
+//
 
 const getNewContest = (contest_name, cb) => {
     pool.query('SELECT contest_id FROM contests WHERE contest_name = $1', [contest_name], (error, results) => {
@@ -517,6 +576,7 @@ const getNewContest = (contest_name, cb) => {
         cb(results)
     })
 }
+//
 
 const addUserToCurrentStats= (user_id, current_weight, goal_weight, display_name, cb) => {
     pool.query('INSERT INTO current_stats (user_id, current_weight, goal_weight, display_name ) VALUES ($1, $2, $3, $4)', [user_id, current_weight, goal_weight, display_name], (error, results) => {
@@ -526,6 +586,7 @@ const addUserToCurrentStats= (user_id, current_weight, goal_weight, display_name
         cb(results)
     })
 }
+//
 
 const userIdByUsername = (username, cb) => {
     pool.query('SELECT user_id FROM users WHERE username = $1', [username], (error, results) => {
@@ -535,6 +596,7 @@ const userIdByUsername = (username, cb) => {
         cb(results)
     })
 }
+//
 
 const updateCurrentWeight = (user_id, contest_id, weight, cb) => {
     pool.query('UPDATE current_stats SET current_weight = $1 WHERE user_id = $2 AND contest_id = $3', [weight, user_id, contest_id], (error, results) => {
@@ -544,6 +606,7 @@ const updateCurrentWeight = (user_id, contest_id, weight, cb) => {
         cb(results)
     })
 }
+//
 
 const addContestIdToCurrentStats = (contest_id, user_id, cb) => {
     pool.query('UPDATE current_stats SET contest_id = $1 WHERE user_id = $2', [contest_id, user_id], (error, results) => {
@@ -553,6 +616,7 @@ const addContestIdToCurrentStats = (contest_id, user_id, cb) => {
         cb(results)
     })
 }
+//
 
 module.exports = {
     getUsers,
