@@ -61,7 +61,6 @@ const userAuth = (request, response, next) => {
         next(new Error('Invalid Login'))
     }
 }
-//
 
 const getUsers = (request, response) => {
     db.getUsers(function(results) {
