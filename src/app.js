@@ -46,7 +46,7 @@ app.post('/api/signup', routes.createUser)
 app.get('/api/checkUserByUsername', routes.checkUserByUsername)
 //
 /////Above
-app.get('/api/users', routes.getUsers)
+app.get('/api/users', routes.getUsers) // GET /api/users/
 //
 app.get('/api/users/:id', db.getUserById)
 //
