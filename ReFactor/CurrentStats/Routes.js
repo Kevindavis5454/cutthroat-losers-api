@@ -26,20 +26,20 @@ GET /api/currentstats/contestId/:contest_id
 // }
 // app.get('/api/contestInfo/sidebarStats', routes.sidebarStats)
 
-GET /api/currentstats/userId/:user_id
-// const weightPageStats = (request, response) => {
-//     const { contest_id, user_id } = request.query
-//     db.weightPageStats(contest_id, user_id, function(results) {
-//         if (results) {
-//             response.status(200).json(results.rows)
-//         }else {
-//             response.send('There was no info for that contest')
-//         }
-//     })
-// }
-// app.get('/api/contestInfo/weightPageStats', routes.weightPageStats)
 
-GET /api/currentstats/userId/:user_id //gets more info than needed, filter on frontend
+const weightPageStats = (request, response) => {
+    const { contest_id, user_id } = request.query
+    db.weightPageStats(contest_id, user_id, function(results) {
+        if (results) {
+            response.status(200).json(results.rows)
+        }else {
+            response.send('There was no info for that contest')
+        }
+    })
+}
+app.get('/api/contestInfo/weightPageStats', routes.weightPageStats)
+
+GET api/contestUserId/displayname --- query with user_name and contest_id 
 // const groupWeightPageStats = (request, response) => {
 //     const { contest_id, user_id } = request.query
 //     db.groupWeightPageStats(contest_id, user_id, function(results) {
@@ -65,28 +65,28 @@ POST /api/currentstats
 // }
 // app.post('/api/addToCurrentStats', routes.addUserToCurrentStats)
 
-PATCH api/currentstats/userId/:user_id // only needs user_id, assumes unique value
-// const updateCurrentWeight = (request, response) => {
-//     const { user_id, contest_id, weight} = request.body
-//     db.updateCurrentWeight(user_id, contest_id, weight, function(results){
-//         if (results) {
-//             response.status(201).send(`Weigh-in added to current stats table`)
-//         }else {
-//             response.send('Weigh-in could not be added')
-//         }
-//     })
-// }
-// app.put('/api/currentStats/weight', routes.updateCurrentWeight)
 
-PATCH api/currentstats/userId/:user_id
-// const addContestIdToCurrentStats = (request, response) => {
-//     const { contest_id, user_id } = request.body
-//     db.addContestIdToCurrentStats(contest_id, user_id, function(results){
-//         if (results) {
-//             response.status(201).send(`Weigh-in added to current stats table`)
-//         }else {
-//             response.send('Weigh-in could not be added')
-//         }
-//     })
-// }
-// app.put('/api/contestInfo/addContestId', routes.addContestIdToCurrentStats)
+const updateCurrentWeight = (request, response) => {
+    const { user_id, contest_id, weight} = request.body
+    db.updateCurrentWeight(user_id, contest_id, weight, function(results){
+        if (results) {
+            response.status(201).send(`Weigh-in added to current stats table`)
+        }else {
+            response.send('Weigh-in could not be added')
+        }
+    })
+}
+app.put('/api/currentStats/weight', routes.updateCurrentWeight)
+
+
+const addContestIdToCurrentStats = (request, response) => {
+    const { contest_id, user_id } = request.body
+    db.addContestIdToCurrentStats(contest_id, user_id, function(results){
+        if (results) {
+            response.status(201).send(`Weigh-in added to current stats table`)
+        }else {
+            response.send('Weigh-in could not be added')
+        }
+    })
+}
+app.put('/api/contestInfo/addContestId', routes.addContestIdToCurrentStats)
