@@ -1,26 +1,28 @@
-const contestAuth = (request, response) => {
-    const { contest_id } = request.body
-    pool.query('SELECT * FROM contests WHERE contest_id = $1', [contest_id], (error, results) => {
-        console.log(results)
-        if (error) {
-            throw error
-        }
-        else {
-            response.cookie('contest_id', results[0].id, {
-                httpOnly: false,
-                maxAge: 65000,
-                signed: false,
-                sameSite: 'none',
-                secure: false,
-            });
-            console.log(response.cookie)
-            response.send(``)
-        }
-    })
-}
 
-//// ABOVE DID NOT HAVE A QUERY ALL in ONE
-app.post('/api/contests/auth', db.contestAuth)
+//eliminated because we don't need a contest auth
+// const contestAuth = (request, response) => {
+//     const { contest_id } = request.body
+//     pool.query('SELECT * FROM contests WHERE contest_id = $1', [contest_id], (error, results) => {
+//         console.log(results)
+//         if (error) {
+//             throw error
+//         }
+//         else {
+//             response.cookie('contest_id', results[0].id, {
+//                 httpOnly: false,
+//                 maxAge: 65000,
+//                 signed: false,
+//                 sameSite: 'none',
+//                 secure: false,
+//             });
+//             console.log(response.cookie)
+//             response.send(``)
+//         }
+//     })
+// }
+
+// //// ABOVE DID NOT HAVE A QUERY ALL in ONE
+// app.post('/api/contests/auth', db.contestAuth)
 
 GET /api/contests
 // const getContests = (request, response) => {
@@ -62,7 +64,7 @@ POST api/contests
 // ///ABOVE HAS NO QUERY ALL IN  ONE
 // app.post('/api/contests', db.createContest)
 
-GET /api/contests/contestName/:contest_name //gets more than required
+GET /api/contests/contestName/:contest_name
 // const getContestId = (request, response) => {
 //     const { contest_name } = request.body
 //     db.getContestId(contest_name, function(results) {
@@ -72,7 +74,8 @@ GET /api/contests/contestName/:contest_name //gets more than required
 // }
 // app.post('/api/contests/getContestId', routes.getContestId)
 
-GET /api/contests/contestName/:contest_name
+
+GET api/contests/contestByName/getId // query with contest_name
 // const getNewContest = (request, response) => {
 //     const { contest_name } = request.query
 //     db.getNewContest(contest_name, function(results) {
