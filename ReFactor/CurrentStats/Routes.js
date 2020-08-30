@@ -65,7 +65,7 @@
 // }
 // app.post('/api/addToCurrentStats', routes.addUserToCurrentStats) --------FIXED--- ALTERED NEW SERVER CODE
 
-PATCH api/contestUserId // query with contest_id and user_id
+////////////PATCH api/contestUserId // query with contest_id and user_id
 // const updateCurrentWeight = (request, response) => {
 //     const { user_id, contest_id, weight} = request.body
 //     db.updateCurrentWeight(user_id, contest_id, weight, function(results){
@@ -76,9 +76,9 @@ PATCH api/contestUserId // query with contest_id and user_id
 //         }
 //     })
 // }
-// app.put('/api/currentStats/weight', routes.updateCurrentWeight)
+// app.put('/api/currentStats/weight', routes.updateCurrentWeight) ---------FIXED
 
-PATCH api/currentstats/userId/:user_id
+/////////////PATCH api/currentstats/userId/:user_id
 // const addContestIdToCurrentStats = (request, response) => {
 //     const { contest_id, user_id } = request.body
 //     db.addContestIdToCurrentStats(contest_id, user_id, function(results){
@@ -89,4 +89,4 @@ PATCH api/currentstats/userId/:user_id
 //         }
 //     })
 // }
-// app.put('/api/contestInfo/addContestId', routes.addContestIdToCurrentStats)
+// app.put('/api/contestInfo/addContestId', routes.addContestIdToCurrentStats) ------ FIXED

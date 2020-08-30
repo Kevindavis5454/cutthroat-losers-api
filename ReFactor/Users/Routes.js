@@ -1,5 +1,5 @@
 
-GET /api/users/:user_id
+//////////GET /api/users/:user_id
 // const getUserById = (request, response) => {
 //     const user_id = ParseInt(request.params.id)
 
@@ -11,9 +11,9 @@ GET /api/users/:user_id
 //     })
 // }
 //ABOVE HAS NO QUERY ALL IN ONE
-// app.get('/api/users/:id', db.getUserById)
+// app.get('/api/users/:id', db.getUserById) ---- NOT USED 
 
-PATCH /api/users/:user_id
+////////////PATCH /api/users/:user_id
 // const updateUser = (request, response) => {
 //     const user_id = parseInt(request.params.id)
 //     const { display_name, username, password } = request.body
@@ -28,10 +28,10 @@ PATCH /api/users/:user_id
 //     )
 // }
 // //ABOVE HAS NO QUERY ALL IN ONE
-// app.put('/api/users/:id', db.updateUser)
+// app.put('/api/users/:id', db.updateUser)  ------ NOT USED
 
 
-DELETE /api/users/:user_id
+///////////DELETE /api/users/:user_id
 // const deleteUser = (request, response) => {
 //     const user_id = parseInt(request.params.id)
 
@@ -43,20 +43,20 @@ DELETE /api/users/:user_id
 //     })
 // }
 // //ABOVE HAS NO QUERY ALL IN ONE
-// app.delete('/api/users/:id', db.deleteUser)
+// app.delete('/api/users/:id', db.deleteUser) ------ NOT USED 
 
 //maybe move this to the front end? There are errors if the username doesn't exist and if the password doesn't match regardless of size or content
-function validUser(user) {
-    const validEmail = typeof user.username == 'string' &&
-        user.username.trim() != '';
-    const validPassword = typeof user.password == 'string' &&
-        user.password.trim() != '' &&
-        user.password.trim().length >= 6;
-    return validEmail && validPassword;
-}
+// function validUser(user) {
+//     const validEmail = typeof user.username == 'string' &&
+//         user.username.trim() != '';
+//     const validPassword = typeof user.password == 'string' &&
+//         user.password.trim() != '' &&
+//         user.password.trim().length >= 6;
+//     return validEmail && validPassword;
+// } ---- NOT NEEDED
 
 
-GET api/users/login/userAuth // query with username
+////////////GET api/users/login/userAuth // query with username
 // const userAuth = (request, response, next) => {
 //     const { username, password } = request.body
 //     if (validUser(request.body)) {
@@ -84,9 +84,9 @@ GET api/users/login/userAuth // query with username
 //         next(new Error('Invalid Login'))
 //     }
 // }
-// app.post('/api/login', routes.userAuth)
+// app.post('/api/login', routes.userAuth) ------ FIXED
 
-GET /api/users/searchByUsername/:username
+/////////////GET /api/users/searchByUsername/:username
 // const checkUserByUsername = (request, response) => {
 //     const { username } = request.query
 //     db.checkUserByUsername(username, function(results) {
@@ -98,9 +98,9 @@ GET /api/users/searchByUsername/:username
 //         }
 //     })
 // }
-// app.get('/api/checkUserByUsername', routes.checkUserByUsername)
+// app.get('/api/checkUserByUsername', routes.checkUserByUsername) ---- FIXED
 
-POST /api/users/
+//////////////POST /api/users/
 // const createUser = (request, response) => {
 //     const { display_name, username, password} = request.body
 //     if (validUser(request.body)) {
@@ -111,9 +111,9 @@ POST /api/users/
 //         })
 //     }
 // }
-// app.post('/api/signup', routes.createUser)
+// app.post('/api/signup', routes.createUser)-------- FIXED
 
-GET /api/users/
+///////////GET /api/users/
 // const getUsers = (request, response) => {
 //     db.getUsers(function(results) {
 //         if (results) {
@@ -123,9 +123,9 @@ GET /api/users/
 //         }
 //     })
 // }
-// app.get('/api/users', routes.getUsers)
+// app.get('/api/users', routes.getUsers) ------- NO CHANGE
 
-GET /api/contesttouser/contestId/:contestid
+//////////////GET /api/contesttouser/contestId/:contestid
 // const contestUsersInfo = (request, response) => {
 //     const { user_id } = request.query
 //     db.contestUsersInfo(user_id, function(results) {
@@ -136,9 +136,9 @@ GET /api/contesttouser/contestId/:contestid
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/contestUsersInfo', routes.contestUsersInfo)
+// app.get('/api/contestInfo/contestUsersInfo', routes.contestUsersInfo) ----- NOT USED 
 
-GET /api/users/adminPage/all
+/////////////GET /api/users/adminPage/all
 // const adminGetAllUsers = (request, response) => {
 //     db.adminGetAllUsers(function(results) {
 //         if (results) {
@@ -148,9 +148,9 @@ GET /api/users/adminPage/all
 //         }
 //     })
 // }
-// app.get('/api/admin/getAllUsers', routes.adminGetAllUsers)
+// app.get('/api/admin/getAllUsers', routes.adminGetAllUsers) ----- FIXED 
 
-GET /api/users.searchByUsername/getId/:username
+///////////////GET /api/users/searchByUsername/getId/:username
 // const userIdByUsername = (request, response) => {
 //     const { username } = request.query
 //     db.userIdByUsername(username, function(results) {
@@ -161,4 +161,4 @@ GET /api/users.searchByUsername/getId/:username
 //         }
 //     })
 // }
-// app.get('/api/userIdByUsername', routes.userIdByUsername)
+// app.get('/api/userIdByUsername', routes.userIdByUsername) ------ FIXED
