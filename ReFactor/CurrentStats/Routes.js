@@ -1,5 +1,5 @@
 
-GET /api/currentstats/userId/:user_id
+///////GET /api/currentstats/userId/:user_id
 // const contestUserStats = (request, response) => {
 //     const  user_id  = request.query.user_id
 //     db.contestUserStats(user_id, function(results) {
@@ -11,9 +11,9 @@ GET /api/currentstats/userId/:user_id
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/currentStats', routes.contestUserStats)
+// app.get('/api/contestInfo/currentStats', routes.contestUserStats) -----------NOT USED ----------
 
-GET /api/currentstats/contestId/:contest_id
+//////////GET /api/currentstats/contestId/:contest_id
 // const sidebarStats = (request, response) => {
 //     const { contest_id } = request.query
 //     db.sidebarStats(contest_id, function(results) {
@@ -24,9 +24,9 @@ GET /api/currentstats/contestId/:contest_id
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/sidebarStats', routes.sidebarStats)
+// app.get('/api/contestInfo/sidebarStats', routes.sidebarStats) ------ FIXED
 
-GET /api/currentstats/contestUserId/weightPageStats // query with contest_id and user_id
+///////////GET /api/currentstats/contestUserId/weightPageStats // query with contest_id and user_id
 // const weightPageStats = (request, response) => {
 //     const { contest_id, user_id } = request.query
 //     db.weightPageStats(contest_id, user_id, function(results) {
@@ -37,9 +37,9 @@ GET /api/currentstats/contestUserId/weightPageStats // query with contest_id and
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/weightPageStats', routes.weightPageStats)
+// app.get('/api/contestInfo/weightPageStats', routes.weightPageStats)-------- FIXED
 
-GET api/contestUserId/displayname // query with user_name and contest_id 
+////////GET api/contestUserId/displayname // query with user_name and contest_id
 // const groupWeightPageStats = (request, response) => {
 //     const { contest_id, user_id } = request.query
 //     db.groupWeightPageStats(contest_id, user_id, function(results) {
@@ -50,9 +50,9 @@ GET api/contestUserId/displayname // query with user_name and contest_id
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/groupWeightPageStats', routes.groupWeightPageStats)
+// app.get('/api/contestInfo/groupWeightPageStats', routes.groupWeightPageStats) ------- FIXED
 
-POST /api/currentstats
+///////////POST /api/currentstats
 // const addUserToCurrentStats = (request, response) => {
 //     const { user_id, current_weight, goal_weight, display_name } = request.body
 //     db.addUserToCurrentStats(user_id, current_weight, goal_weight, display_name, function(results){
@@ -63,7 +63,7 @@ POST /api/currentstats
 //         }
 //     })
 // }
-// app.post('/api/addToCurrentStats', routes.addUserToCurrentStats)
+// app.post('/api/addToCurrentStats', routes.addUserToCurrentStats) --------FIXED--- ALTERED NEW SERVER CODE
 
 PATCH api/contestUserId // query with contest_id and user_id
 // const updateCurrentWeight = (request, response) => {

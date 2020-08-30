@@ -2,27 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b44ec4-7533-4350-b026-e03293fabf91" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ReFactor/ContestToUser/Queries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/ContestToUser/Routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Contests/Queries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Contests/Routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/CurrentStats/Queries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/CurrentStats/Routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Measurements/Queries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Measurements/Routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Points/Queries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Points/Routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Users/Queries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Users/Routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Weighin/Queries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/Weighin/Routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/WorkoutTracking/Queries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReFactor/WorkoutTracking/Routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReFactor/Contests/Queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/ReFactor/Contests/Queries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReFactor/Contests/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/ReFactor/Contests/Routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReFactor/CurrentStats/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/ReFactor/CurrentStats/Routes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
