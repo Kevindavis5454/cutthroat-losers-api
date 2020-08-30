@@ -1,12 +1,15 @@
-const userAuth = (username, password, cb) => {
-    pool.query('SELECT password, user_id FROM users WHERE username = $1', [username], (error, results) => {
-        //console.log(results.rows[0].password)
-        if (error) {
-            throw error
-        }
-        cb(results)
-    })
-}
+
+
+GET api/users/login/userAuth // query with username and password
+// const userAuth = (username, password, cb) => {
+//     pool.query('SELECT password, user_id FROM users WHERE username = $1', [username], (error, results) => {
+//         //console.log(results.rows[0].password)
+//         if (error) {
+//             throw error
+//         }
+//         cb(results)
+//     })
+// }
 
 GET /api/users/searchByUsername/:username
 // const checkUserByUsername = (username, cb) => {
@@ -50,7 +53,7 @@ GET /api/users/:user_id
 //     })
 // }
 
-GET /api/users/ //Gets more info than neccessary but should be ok
+GET /api/users/adminPage/all
 // const adminGetAllUsers = (cb) => {
 //     pool.query('SELECT user_id, username, display_name FROM users', (error, results) => {
 //         if (error) {
@@ -60,7 +63,7 @@ GET /api/users/ //Gets more info than neccessary but should be ok
 //     })
 // }
 
-GET /api/users/searchByUsername/:username
+GET /api/users.searchByUsername/getId/:username
 // const userIdByUsername = (username, cb) => {
 //     pool.query('SELECT user_id FROM users WHERE username = $1', [username], (error, results) => {
 //         if (error) {

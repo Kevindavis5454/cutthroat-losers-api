@@ -45,7 +45,7 @@ DELETE /api/users/:user_id
 // //ABOVE HAS NO QUERY ALL IN ONE
 // app.delete('/api/users/:id', db.deleteUser)
 
-
+//maybe move this to the front end? There are errors if the username doesn't exist and if the password doesn't match regardless of size or content
 function validUser(user) {
     const validEmail = typeof user.username == 'string' &&
         user.username.trim() != '';
@@ -56,34 +56,35 @@ function validUser(user) {
 }
 
 
-const userAuth = (request, response, next) => {
-    const { username, password } = request.body
-    if (validUser(request.body)) {
-        db.getUserByUsername(username, function(results){
-            if (results){
-                db.userAuth(username, password, function(results){
-                    if (results.rows[0].password == password) {
-                        response.cookie('user_id', results.rows[0].user_id, {
-                            httpOnly: false,
-                            expires: new Date(Date.now() + 12 * 3600000),
-                            signed: false,
-                            sameSite: 'none',
-                            secure: true
-                        });
-                        console.log(response.cookie)
-                        response.send(``)
-                    }
-                })
-            }else {
-                next(new Error('Username does not exist'))
-            }
-        })
+GET api/users/login/userAuth // query with username
+// const userAuth = (request, response, next) => {
+//     const { username, password } = request.body
+//     if (validUser(request.body)) {
+//         db.getUserByUsername(username, function(results){
+//             if (results){
+//                 db.userAuth(username, password, function(results){
+//                     if (results.rows[0].password == password) {
+//                         response.cookie('user_id', results.rows[0].user_id, {
+//                             httpOnly: false,
+//                             expires: new Date(Date.now() + 12 * 3600000),
+//                             signed: false,
+//                             sameSite: 'none',
+//                             secure: true
+//                         });
+//                         console.log(response.cookie)
+//                         response.send(``)
+//                     }
+//                 })
+//             }else {
+//                 next(new Error('Username does not exist'))
+//             }
+//         })
 
-    }else {
-        next(new Error('Invalid Login'))
-    }
-}
-app.post('/api/login', routes.userAuth)
+//     }else {
+//         next(new Error('Invalid Login'))
+//     }
+// }
+// app.post('/api/login', routes.userAuth)
 
 GET /api/users/searchByUsername/:username
 // const checkUserByUsername = (request, response) => {
@@ -137,7 +138,7 @@ GET /api/contesttouser/contestId/:contestid
 // }
 // app.get('/api/contestInfo/contestUsersInfo', routes.contestUsersInfo)
 
-GET /api/users/ //Gets more info than necessary but should be ok
+GET /api/users/adminPage/all
 // const adminGetAllUsers = (request, response) => {
 //     db.adminGetAllUsers(function(results) {
 //         if (results) {
@@ -149,7 +150,7 @@ GET /api/users/ //Gets more info than necessary but should be ok
 // }
 // app.get('/api/admin/getAllUsers', routes.adminGetAllUsers)
 
-GET /api/users/searchByUsername/:username
+GET /api/users.searchByUsername/getId/:username
 // const userIdByUsername = (request, response) => {
 //     const { username } = request.query
 //     db.userIdByUsername(username, function(results) {
