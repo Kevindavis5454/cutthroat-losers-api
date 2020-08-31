@@ -37,7 +37,7 @@ GET api/contesttouser/contestId/:contest_id
 // }
 // app.get('/api/contestInfo/contestUsers', routes.contestUsers)
 
-GET api/contesttouser/contestId/:contest_id //gets more info than needed
+GET api/contesttouser/getOnlyUserId // query with contest_id
 // const contestUserIds = (request, response) => {
 //     const { contest_id } = request.query
 //     db.contestUsersIds(contest_id, function(results) {
