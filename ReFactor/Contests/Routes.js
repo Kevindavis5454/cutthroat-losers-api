@@ -24,7 +24,7 @@
 // //// ABOVE DID NOT HAVE A QUERY ALL in ONE
 // app.post('/api/contests/auth', db.contestAuth)
 
-GET /api/contests
+///////GET /api/contests
 // const getContests = (request, response) => {
 //     pool.query('SELECT * FROM contests ORDER BY contest_id ASC', (error, results) => {
 //         if (error) {
@@ -34,9 +34,9 @@ GET /api/contests
 //     })
 // }
 // ///ABOVE HAS NO QUERY ALL IN  ONE
-// app.get('/api/contests', db.getContests)
+// app.get('/api/contests', db.getContests)  ----- No CHANGE
 
-GET /api/contests/:contest_id
+///////GET /api/contests/:contest_id
 // const getContestById = (request, response) => {
 //     const contest_id = parseInt(request.params.id)
 
@@ -48,9 +48,9 @@ GET /api/contests/:contest_id
 //     })
 // }
 // ///ABOVE HAS NO QUERY ALL IN  ONE
-// app.get('/api/contests/:id', db.getContestById)
+// app.get('/api/contests/:id', db.getContestById) --- NO CHANGE
 
-POST api/contests
+//////POST api/contests
 // const createContest = (request, response) => {
 //     const { date_start, date_end, contest_name, weighin_day, date_created} = request.body
 //     pool.query('INSERT INTO contests (date_start, date_end, contest_name, weighin_day, date_created) VALUES ($1, $2, $3, $4, $5) RETURNING contest_id', [date_start, date_end, contest_name, weighin_day, date_created], (error, results) => {
@@ -62,9 +62,9 @@ POST api/contests
 //     })
 // }
 // ///ABOVE HAS NO QUERY ALL IN  ONE
-// app.post('/api/contests', db.createContest)
+// app.post('/api/contests', db.createContest) ----- CHANGE
 
-GET /api/contests/contestName/:contest_name
+/////GET /api/contests/contestName/:contest_name
 // const getContestId = (request, response) => {
 //     const { contest_name } = request.body
 //     db.getContestId(contest_name, function(results) {
@@ -72,10 +72,10 @@ GET /api/contests/contestName/:contest_name
 //         response.status(200).json(results.rows)
 //     })
 // }
-// app.post('/api/contests/getContestId', routes.getContestId)
+// app.post('/api/contests/getContestId', routes.getContestId) ---------- FIXED
 
 
-GET api/contests/contestByName/getId // query with contest_name
+///////GET api/contests/contestByName/getId // query with contest_name
 // const getNewContest = (request, response) => {
 //     const { contest_name } = request.query
 //     db.getNewContest(contest_name, function(results) {
@@ -86,4 +86,4 @@ GET api/contests/contestByName/getId // query with contest_name
 //         }
 //     })
 // }
-// app.get('/api/getNewContest', routes.getNewContest)
+// app.get('/api/getNewContest', routes.getNewContest) ------------FIXED
