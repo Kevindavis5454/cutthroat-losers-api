@@ -1,4 +1,4 @@
-GET api/contesttouser/userId/:user_id
+// GET api/contesttouser/userId/:user_id
 // const getContestsToUserById = (request, response) => {
 //     const user_id = parseInt(request.params.id)
 
@@ -10,9 +10,9 @@ GET api/contesttouser/userId/:user_id
 //     })
 // }
 // ////ABOVE HAS NO QUERY ALL IN ONE
-// app.get('/api/contest_to_user/:id', db.getContestsToUserById)
+// app.get('/api/contest_to_user/:id', db.getContestsToUserById) ---------- NOT USED
 
-GET api/contesttouser //this error handling makes no sense
+// GET api/contesttouser //this error handling makes no sense
 // const getContestToUser = (request, response) => {
 //     db.getContestToUser(function(results) {
 //         if (results) {
@@ -22,9 +22,9 @@ GET api/contesttouser //this error handling makes no sense
 //         }
 //     })
 // }
-// app.get('/api/contest_to_user', routes.getContestToUser)
+// app.get('/api/contest_to_user', routes.getContestToUser) --------- NOT USED
 
-GET api/contesttouser/contestId/:contest_id
+// GET api/contesttouser/contestId/:contest_id
 // const contestUsers = (request, response) => {
 //     const { contest_id } = request.query
 //     db.contestUsers(contest_id, function(results) {
@@ -35,9 +35,9 @@ GET api/contesttouser/contestId/:contest_id
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/contestUsers', routes.contestUsers)
+// app.get('/api/contestInfo/contestUsers', routes.contestUsers) ------- NOT USED
 
-GET api/contesttouser/getOnlyUserId // query with contest_id
+// GET api/contesttouser/getOnlyUserId // query with contest_id
 // const contestUserIds = (request, response) => {
 //     const { contest_id } = request.query
 //     db.contestUsersIds(contest_id, function(results) {
@@ -49,9 +49,9 @@ GET api/contesttouser/getOnlyUserId // query with contest_id
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/contestUserIds', routes.contestUserIds)
+// app.get('/api/contestInfo/contestUserIds', routes.contestUserIds) -------- FIXED
 
-POST api/contesttouser
+// POST api/contesttouser
 // const addUserToContest = (request, response) => {
 //     const { contest_id, user_id } = request.body
 //     db.addUserToContest(contest_id, user_id, function(results){
@@ -62,4 +62,4 @@ POST api/contesttouser
 //         }
 //     })
 // }
-// app.post('/api/admin/addUserToContest', routes.addUserToContest)
+// app.post('/api/admin/addUserToContest', routes.addUserToContest) --------- FIXED

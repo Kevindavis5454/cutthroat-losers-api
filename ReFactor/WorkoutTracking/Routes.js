@@ -1,5 +1,5 @@
 
-GET api/workouts/getWorkoutData // query with user_id, contest_id, and category
+// GET api/workouts/getWorkoutData // query with user_id, contest_id, and category
 // const contestUserWorkouts = (request, response) => {
 //     const { contest_id, user_id, category } = request.query
 //     db.contestUserWorkouts(contest_id, user_id, category, function(results) {
@@ -10,9 +10,9 @@ GET api/workouts/getWorkoutData // query with user_id, contest_id, and category
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/contestUserWorkouts', routes.contestUserWorkouts)
+// app.get('/api/contestInfo/contestUserWorkouts', routes.contestUserWorkouts) ---------- FIXED
 
-GET api/workouts/getDates
+// GET api/workouts/getDates
 // const groupContestUserWorkouts = (request, response) => {
 //     const { contest_id, user_id } = request.query
 //     db.groupContestUserWorkouts(contest_id, user_id, function(results) {
@@ -23,9 +23,9 @@ GET api/workouts/getDates
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/groupContestUserWorkouts', routes.groupContestUserWorkouts)
+// app.get('/api/contestInfo/groupContestUserWorkouts', routes.groupContestUserWorkouts) --------- FIXED
 
-POST api/workouts/
+// POST api/workouts/
 // const logWorkout = (request, response) => {
 //     const { user_id, contest_id, category} = request.body
 //     db.logWorkout(user_id, contest_id, category, function(results){
@@ -36,4 +36,4 @@ POST api/workouts/
 //         }
 //     })
 // }
-// app.post('/api/contestInfo/logWorkout', routes.logWorkout)
+// app.post('/api/contestInfo/logWorkout', routes.logWorkout) --------FIXED

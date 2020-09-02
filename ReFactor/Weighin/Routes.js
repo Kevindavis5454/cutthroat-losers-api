@@ -1,5 +1,5 @@
 
-GET api/weighins/getContestWeighins
+// GET api/weighins/getContestWeighins
 // const contestWeighins = (request, response) => {
 //     const { contest_id, user_id } = request.query
 //     db.contestWeighins(contest_id, user_id, function(results) {
@@ -10,9 +10,9 @@ GET api/weighins/getContestWeighins
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/userWeights', routes.contestWeighins)
+// app.get('/api/contestInfo/userWeights', routes.contestWeighins)---------- FIXED
 
-GET api/weighins/getUserWeights
+// GET api/weighins/getUserWeights
 // const weightProgress = (request, response) => {
 //     const { user_id } = request.query
 //     db.weightProgress(user_id, function(results) {
@@ -23,9 +23,9 @@ GET api/weighins/getUserWeights
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/weightProgress', routes.weightProgress)
+// app.get('/api/contestInfo/weightProgress', routes.weightProgress)-------- FIXED
 
-POST api/weighins/
+// POST api/weighins/
 // const logWeight = (request, response) => {
 //     const { user_id, contest_id, weight} = request.body
 //     db.logWeight(user_id, contest_id, weight, function(results){
@@ -36,9 +36,9 @@ POST api/weighins/
 //         }
 //     })
 // }
-// app.post('/api/contestInfo/logWeight', routes.logWeight)
+// app.post('/api/contestInfo/logWeight', routes.logWeight)--------- FIXED
 
-GET api/weighins/getAdminUserWeights
+// GET api/weighins/getAdminUserWeights
 // const adminWeightProgress = (request, response) => {
 //     const { user_id } = request.query
 //     db.adminWeightProgress(user_id, function(results) {
@@ -49,4 +49,4 @@ GET api/weighins/getAdminUserWeights
 //         }
 //     })
 // }
-// app.get('/api/contestInfo/adminWeight', routes.adminWeightProgress)
+// app.get('/api/contestInfo/adminWeight', routes.adminWeightProgress)---------- FIXED
